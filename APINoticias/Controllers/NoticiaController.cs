@@ -57,6 +57,7 @@ namespace APINoticias.Controllers
             {
                 return NotFound();
             }
+            repoNoticia.Delete(entidad);
             return Ok();
         }
     }
