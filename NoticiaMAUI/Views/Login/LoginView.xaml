@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NoticiaMAUI.Views.Login.LoginView"
+             Title="LoginView"
+             Shell.NavBarIsVisible="False"
+             >
+    <Grid BackgroundColor="White">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" ></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Rectangle Style="{StaticResource Rdegradado}" ></Rectangle>
+
+        <Border Grid.Row="1" Style="{StaticResource BDatos}" Margin="40,-50,40,0" Padding="0,0,0,60" >
+
+            <StackLayout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition ></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Image Grid.Row="0" Source="daily.png" WidthRequest="120" ></Image>
+                    <StackLayout Grid.Row="2" Orientation="Vertical" HorizontalOptions="CenterAndExpand" Margin="15,0,15,0">
+                        <Frame BackgroundColor="Transparent"  BorderColor="White" Padding="0" >
+                            <StackLayout Orientation="Horizontal">
+                                <Frame HeightRequest="40" WidthRequest="40" CornerRadius="30" Margin="4" Padding="5" >
+                                    <Image Source="usuario.png" Aspect="AspectFill" Margin="0"  ></Image>
+                                </Frame>
+                                <Entry HorizontalOptions="FillAndExpand" Placeholder="USUARIO" CharacterSpacing="5" ></Entry>
+                            </StackLayout>
+                        </Frame>
+                        <Frame BackgroundColor="Transparent"  BorderColor="White" Padding="0" CornerRadius="30" Margin="0,30,0,0">
+                            <StackLayout Orientation="Horizontal">
+                                <Frame HeightRequest="40" WidthRequest="40" CornerRadius="30" Margin="4" Padding="5">
+                                    <Image Source="contra.png" Aspect="AspectFill" Margin="0"></Image>
+                                </Frame>
+                                <Entry  HorizontalOptions="FillAndExpand" Placeholder="CONTRASEÑA" CharacterSpacing="5" IsPassword="True"></Entry>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </Border>
+
+        <VerticalStackLayout Background="white" Grid.Row="2" >
+
+            <Border  Style="{StaticResource BDegradados}" Margin="40,60,40,10" ScaleX="1 "  StrokeShape="RoundRectangle 0,0,0,30" >
+                <Button 
+                        Text="INCIAR"
+                        
+                        Style="{StaticResource BotonesNoticias}"
+                         >
+                </Button>
+            </Border>
+
+            <Label Grid.Row="1"
+                       HorizontalTextAlignment="Center"
+                       Margin="9"
+                       TextColor="#263CFF"               
+                       >¿xd
+
+            </Label>
+        </VerticalStackLayout>
+
+
+        <Rectangle Grid.Row="3"  VerticalOptions="End"  Style="{StaticResource Rdegradado}"></Rectangle>
+
+    </Grid>
+</ContentPage>
