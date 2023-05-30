@@ -50,7 +50,7 @@
 
         <VerticalStackLayout Background="white" Grid.Row="2" >
 
-            <Border  Style="{StaticResource BDegradados}" Margin="40,60,40,10" ScaleX="1 "  StrokeShape="RoundRectangle 0,0,0,30" >
+            <Border  Style="{StaticResource BDegradados}" Margin="40,60,40,10">
                 <Button 
                         Text="INCIAR"
                         

@@ -2,11 +2,20 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NoticiaMAUI.Views.InicioView"
-             Title="InicioView">
-    <Grid>
+             Title="InicioView"
+             Shell.NavBarIsVisible="False" 
+             >
+    <Grid BackgroundColor="#c92a2e">
+
         <Grid.GestureRecognizers>
             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" ></TapGestureRecognizer>
         </Grid.GestureRecognizers>
-        <Label FontSize="Title" Text="HOLA MUNDO"></Label>
+
+        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <Image Source="logo.jpg"></Image>
+            <Label HorizontalOptions="Center" Text="Da click para continuar"></Label>
+        </VerticalStackLayout>
+       
+        
     </Grid>
 </ContentPage>

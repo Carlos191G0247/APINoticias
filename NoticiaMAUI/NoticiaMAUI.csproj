@@ -49,8 +49,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Fonts\kenycb.ttf" />
 	  <None Remove="Resources\Images\contra.png" />
 	  <None Remove="Resources\Images\daily.png" />
+	  <None Remove="Resources\Images\logo.jpg" />
+	  <None Remove="Resources\Images\logo2.jpg" />
 	  <None Remove="Resources\Images\usuario.png" />
 	</ItemGroup>
 
