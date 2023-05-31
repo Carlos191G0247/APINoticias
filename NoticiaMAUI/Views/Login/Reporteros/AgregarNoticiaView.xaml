@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NoticiaMAUI.Views.AgregarNoticiaView"
+             xmlns:vm="clr-namespace:NoticiaMAUI.ViewModels"
+             Title="AgregarNoticiaView" x:DataType="vm:ViewModel">
+    <Grid>
+
+        <VerticalStackLayout>
+            <Label Text="Título:" />
+            <Entry  Text="{Binding noticiass.Titulo}"></Entry>
+
+            <Label Text="Autor:" />
+            <Entry Text="{Binding noticiass.Autor}" ></Entry>
+
+            <Label Text="Contenido:" />
+            <Editor Text="{Binding noticiass.Contenido}"></Editor>
+
+            <Label Text="Imagen:" />
+            <Button Text="Seleccionar imagen" Command="{Binding SeleccionarImagenCommand}" />
+            <Image Source="{Binding ImagePath}" WidthRequest="100" HeightRequest="100" />
+            <Label Text="Fecha:"/>
+            <DatePicker Date="{Binding noticiass.Fecha}" />
+        </VerticalStackLayout>
+    </Grid>
+    
+</ContentPage>

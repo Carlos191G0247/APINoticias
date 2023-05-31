@@ -55,6 +55,7 @@
                         Text="INCIAR"
                         
                         Style="{StaticResource BotonesNoticias}"
+                        Command="{Binding VerAgregarNoticiaView}"
                          >
                 </Button>
             </Border>

@@ -12,6 +12,7 @@ namespace NoticiaMAUI
             InitializeComponent();
 
             MainPage = new AppShell();
+            Routing.RegisterRoute("//VerAgregarRep", typeof(AgregarNoticiaView));
             Routing.RegisterRoute("//MainView", typeof(MainView));
             Routing.RegisterRoute("//LoginView", typeof(LoginView));
         }
