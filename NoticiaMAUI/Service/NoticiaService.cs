@@ -16,16 +16,16 @@ namespace NoticiaMAUI.Service
         {
             client = new HttpClient()
             {
-                BaseAddress = new Uri("https://dailybugle.sistemas19.com/")
+                BaseAddress = new Uri("https://localhost:44339/")
             };
 
 
         }
-        public async Task<List<Noticia>> GetSalas()
+        public async Task<List<Noticia>> GetNoticias()
         {
             List<Noticia> noticias = null;
 
-            var response = await client.GetAsync("api/Noticias");
+            var response = await client.GetAsync("api/Noticia");
 
             if (response.IsSuccessStatusCode) //status= 200 ok
             {
@@ -42,22 +42,16 @@ namespace NoticiaMAUI.Service
                 return new List<Noticia>();
             }
         }
-        public async Task<Noticia> Insert(Noticia n)
+        public async Task<bool> Insert(Noticia n)
         {
-            Noticia noticias;
+
+
             var json = JsonConvert.SerializeObject(n);
-            StringContent scontent = new StringContent(json, Encoding.UTF8, "application/json");
-            var result = await client.PostAsync("api/Noticias", scontent); // Actualiza la ruta aquí
-            if (result.StatusCode == System.Net.HttpStatusCode.OK)
-            {
-                string jsonback = await result.Content.ReadAsStringAsync();
-                noticias = JsonConvert.DeserializeObject<Noticia>(jsonback);
-                return noticias;
-            }
-            else
-            {
-                return new Noticia();
-            }
+            var response = await client.PostAsync("api/Noticia", new StringContent(json, Encoding.UTF8,
+                "application/json"));
+
+
+            return true;
         }
     }
 }

@@ -21,6 +21,9 @@
             <Image Source="{Binding ImagePath}" WidthRequest="100" HeightRequest="100" />
             <Label Text="Fecha:"/>
             <DatePicker Date="{Binding noticiass.Fecha}" />
+            <Button Text="Agregar Noticia" Command="{Binding AgregarNotciaCommand}" />
+
+
         </VerticalStackLayout>
     </Grid>
     

@@ -44,7 +44,9 @@ public partial class Sistem21DailyBugleContext : DbContext
             entity.Property(e => e.Contenido)
                 .HasColumnType("text")
                 .HasColumnName("contenido");
-            entity.Property(e => e.Fecha).HasColumnName("fecha");
+            entity.Property(e => e.Fecha)
+                .HasColumnType("datetime")
+                .HasColumnName("fecha");
             entity.Property(e => e.Imagen)
                 .HasColumnType("text")
                 .HasColumnName("imagen");
