@@ -4,18 +4,22 @@
              x:Class="NoticiaMAUI.Views.MainView"
              xmlns:vm="clr-namespace:NoticiaMAUI.ViewModels"
              xmlns:mo="clr-namespace:NoticiaMAUI.Models"
-             Title="MainView" x:DataType="vm:ViewModel"   >
+             Title="MainView" x:DataType="vm:ViewModel" 
+             Shell.NavBarIsVisible="False"
+             >
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition ></RowDefinition>
         </Grid.RowDefinitions>
         <VerticalStackLayout>
             <Image Source="logo2.jpg"></Image>
 
             <Button HorizontalOptions="End" Grid.Row="1" Text="SESION" Command="{Binding VerInicioSesionView}"></Button>
         </VerticalStackLayout>
-        <CollectionView Grid.Row="1" ItemsSource="{Binding NoticiaList}">
+        <ScrollView Grid.Row="1">
+
+        <CollectionView  ItemsSource="{Binding NoticiaList}">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical">
                 </GridItemsLayout>
@@ -24,22 +28,32 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="mo:Noticia" >
 
-                    <HorizontalStackLayout >
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
 
-                        <Label  FontSize="30" Text="{Binding Titulo}" TextColor="Black" ></Label>
-                        <Label  FontSize="30" Text="{Binding Autor}" TextColor="Black"   ></Label>
-                        <Label  FontSize="30" Text="{Binding Contenido}" TextColor="Black"  ></Label>
-                        <Image  Source="logo.jpg" WidthRequest="50" HeightRequest="50" ></Image>
-                        <Label  FontSize="30" Text="{Binding Fecha}" TextColor="Black"  ></Label>
+                        <Grid HeightRequest="100" WidthRequest="100">
+                            <Image Aspect="Fill" Margin="8"  Source="logo.jpg"   ></Image>
+                       </Grid> 
+                        <VerticalStackLayout Grid.Column="1">
+                            
+                            <Label  FontSize="30" Text="{Binding Titulo}" TextColor="Black" ></Label>
+                            <Label  FontSize="30" Text="{Binding Contenido}" TextColor="Black"  ></Label>
+                            <Label  FontSize="30" Text="{Binding Fecha}" TextColor="Black"  ></Label>
+                        </VerticalStackLayout>
+                       
 
 
 
-                    </HorizontalStackLayout>
+                    </Grid>
 
 
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        </ScrollView>
 
     </Grid>
 </ContentPage>

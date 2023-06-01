@@ -13,7 +13,7 @@
 
         <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
             <Image Source="logo.jpg"></Image>
-            <Label HorizontalOptions="Center" Text="Da click para continuar"></Label>
+            <Label HorizontalOptions="Center"  CharacterSpacing="4" FontSize="11" TextColor="White" Text="DA CLICK PARA CONTINUAR"></Label>
         </VerticalStackLayout>
        
         
