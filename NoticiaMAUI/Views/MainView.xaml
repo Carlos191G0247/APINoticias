@@ -3,14 +3,43 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NoticiaMAUI.Views.MainView"
              xmlns:vm="clr-namespace:NoticiaMAUI.ViewModels"
-             Title="MainView" x:DataType="vm:ViewModel" >
+             xmlns:mo="clr-namespace:NoticiaMAUI.Models"
+             Title="MainView" x:DataType="vm:ViewModel"   >
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <Image Source="logo2.jpg"></Image>
+        <VerticalStackLayout>
+            <Image Source="logo2.jpg"></Image>
 
-        <Button HorizontalOptions="End" Grid.Row="1" Text="SESION" Command="{Binding VerInicioSesionView}"></Button>
+            <Button HorizontalOptions="End" Grid.Row="1" Text="SESION" Command="{Binding VerInicioSesionView}"></Button>
+        </VerticalStackLayout>
+        <CollectionView Grid.Row="1" ItemsSource="{Binding NoticiaList}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical">
+                </GridItemsLayout>
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="mo:Noticia" >
+
+                    <HorizontalStackLayout >
+
+                        <Label  FontSize="30" Text="{Binding Titulo}" TextColor="Black" ></Label>
+                        <Label  FontSize="30" Text="{Binding Autor}" TextColor="Black"   ></Label>
+                        <Label  FontSize="30" Text="{Binding Contenido}" TextColor="Black"  ></Label>
+                        <Image  Source="logo.jpg" WidthRequest="50" HeightRequest="50" ></Image>
+                        <Label  FontSize="30" Text="{Binding Fecha}" TextColor="Black"  ></Label>
+
+
+
+                    </HorizontalStackLayout>
+
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
     </Grid>
 </ContentPage>

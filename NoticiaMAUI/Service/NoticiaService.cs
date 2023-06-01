@@ -16,7 +16,7 @@ namespace NoticiaMAUI.Service
         {
             client = new HttpClient()
             {
-                BaseAddress = new Uri("https://localhost:44339/")
+                BaseAddress = new Uri("https://dailybugle.sistemas19.com/")
             };
 
 

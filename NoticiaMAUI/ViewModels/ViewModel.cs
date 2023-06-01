@@ -40,7 +40,7 @@ namespace NoticiaMAUI.ViewModels
                 if (_imagePath != value)
                 {
                     _imagePath = value;
-                    OnPropertyChanged(nameof(ImagePath));
+                    Actualizar(nameof(ImagePath));
                 }
             }
         }
@@ -53,6 +53,8 @@ namespace NoticiaMAUI.ViewModels
             AgregarNotciaCommand = new Command(AgregarNoticia);
             //imagen
             SeleccionarImagenCommand = new Command(async () => await SeleccionarImagen());
+
+            cargarNoticias();
 
         }
 
@@ -67,8 +69,7 @@ namespace NoticiaMAUI.ViewModels
 
                 if (result != null)
                 {
-                    // Aquí puedes realizar cualquier lógica adicional con la imagen seleccionada
-                    // Por ejemplo, puedes guardar la ruta de la imagen en la propiedad ImagePath
+          
                     ImagePath = result.FullPath;
                 }
             }
@@ -119,6 +120,14 @@ namespace NoticiaMAUI.ViewModels
             //noticiass = new Noticia();
             //ImagePath = string.Empty;
         }
+        async void cargarNoticias()
+        {
+            NoticiaList.Clear();
+            var datos = await noticiaserver.GetNoticias();
+            datos.ForEach(x => NoticiaList.Add(x));
+            Actualizar(nameof(NoticiaList));
+
+        }
 
 
         private async void VerAgregarRep()
@@ -142,9 +151,9 @@ namespace NoticiaMAUI.ViewModels
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string propertyName)
+        protected virtual void Actualizar(string property)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
         }
     }
 }
