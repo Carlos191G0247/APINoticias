@@ -17,7 +17,8 @@
 
             <Button HorizontalOptions="End" Grid.Row="1" Text="SESION" Command="{Binding VerInicioSesionView}"></Button>
         </VerticalStackLayout>
-        <ScrollView Grid.Row="1">
+        <ScrollView Grid.Row="1"
+                    Margin="5">
 
         <CollectionView  ItemsSource="{Binding NoticiaList}">
             <CollectionView.ItemsLayout>
@@ -28,7 +29,7 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="mo:Noticia" >
 
-                    <Grid >
+                    <Grid Margin="0,5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"></ColumnDefinition>
                             <ColumnDefinition Width="auto"></ColumnDefinition>
@@ -37,17 +38,62 @@
                         <Grid HeightRequest="100" WidthRequest="100">
                             <Image Aspect="Fill" Margin="8"  Source="logo.jpg"   ></Image>
                        </Grid> 
-                        <VerticalStackLayout Grid.Column="1">
+                        <!--<VerticalStackLayout Grid.Column="1">
                             
                             <Label  FontSize="30" Text="{Binding Titulo}" TextColor="Black" ></Label>
                             <Label  FontSize="30" Text="{Binding Contenido}" TextColor="Black"  ></Label>
                             <Label  FontSize="30" Text="{Binding Fecha}" TextColor="Black"  ></Label>
-                        </VerticalStackLayout>
-                       
+                        </VerticalStackLayout>-->
+                            <Border Margin="0"
+                HeightRequest="150"
+                BackgroundColor="#222"
+               StrokeThickness="0"
+                WidthRequest="450">
+
+                                <Grid >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid HeightRequest="100" WidthRequest="100"
+                                          >
+                                        <Image Aspect="Fill"  
+                           Source="logo.png"
+                                               Margin="8,0"></Image>
+                                    </Grid>
+                                    <VerticalStackLayout Grid.Column="1"
+                                     HorizontalOptions="Start"
+                                     VerticalOptions="Center">
+                                        <Label FontSize="20" 
+                            Text="{Binding Titulo}" 
+                            TextColor="White"
+                            LineBreakMode="WordWrap"
+                            Padding="0,0,50,0"
+                            FontFamily="BuiltBold"
+                                     ></Label>
+                                        <Label  FontSize="15" 
+                            Text="{Binding Contenido}" 
+                            TextColor="White"
+                            LineBreakMode="TailTruncation"
+                           FontFamily="GeologicaLight"
+                                                Padding="0,0,50,0">
+                                        </Label>
+                                        <Label  FontSize="12" 
+                            Text="{Binding Fecha}"
+                            TextColor="black"
+                            BackgroundColor="#FFBF00"
+                            FontAttributes="Bold"
+                            HorizontalTextAlignment="Start"
+                                                ></Label>
+
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Border>
 
 
 
-                    </Grid>
+                        </Grid>
 
 
                 </DataTemplate>

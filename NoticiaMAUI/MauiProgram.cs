@@ -14,6 +14,9 @@ namespace NoticiaMAUI
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                     fonts.AddFont("kenycb.ttf", "keny");
+                    fonts.AddFont("built-bold.otf", "BuiltBold");
+                    fonts.AddFont("built-regular.otf", "BuiltRegular");
+                    fonts.AddFont("Geologica-Light.ttf", "GeologicaLight");
                 });
 
 #if DEBUG
