@@ -7,4 +7,9 @@ public partial class AgregarNoticiaView : ContentPage
 		InitializeComponent();
         BindingContext = App.ViewModel;
     }
+    protected override bool OnBackButtonPressed()
+    {
+        Shell.Current.GoToAsync("//LoginView");
+        return true; // Indica que se ha manejado el evento de retroceso
+    }
 }

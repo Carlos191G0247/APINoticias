@@ -33,7 +33,7 @@
                        BackgroundColor="Transparent"
                         Text="☰"
                         VerticalOptions="Center"
-                    Command="{Binding VerAgregarNoticiaView}"
+                    Command="{Binding VerInicioSesionView}"
                     
                        
                        ></Button>
