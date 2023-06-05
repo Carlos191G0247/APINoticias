@@ -50,6 +50,7 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Fonts\kenycb.ttf" />
+	  <None Remove="Resources\Fonts\Poppins-Regular.ttf" />
 	  <None Remove="Resources\Images\contra.png" />
 	  <None Remove="Resources\Images\daily.png" />
 	  <None Remove="Resources\Images\logo.jpg" />
@@ -70,6 +71,9 @@
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </MauiFont>
 	  <MauiFont Update="Resources\Fonts\Geologica-Light.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiFont>
+	  <MauiFont Update="Resources\Fonts\Poppins-Regular.ttf">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </MauiFont>
 	</ItemGroup>

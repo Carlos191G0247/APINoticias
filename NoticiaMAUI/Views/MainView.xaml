@@ -38,12 +38,7 @@
                         <Grid HeightRequest="100" WidthRequest="100">
                             <Image Aspect="Fill" Margin="8"  Source="logo.jpg"   ></Image>
                        </Grid> 
-                        <!--<VerticalStackLayout Grid.Column="1">
-                            
-                            <Label  FontSize="30" Text="{Binding Titulo}" TextColor="Black" ></Label>
-                            <Label  FontSize="30" Text="{Binding Contenido}" TextColor="Black"  ></Label>
-                            <Label  FontSize="30" Text="{Binding Fecha}" TextColor="Black"  ></Label>
-                        </VerticalStackLayout>-->
+                       
                             <Border Margin="0"
                 HeightRequest="150"
                 BackgroundColor="#222"
