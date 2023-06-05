@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NoticiaMAUI.Views.AgregarNoticiaView"
              xmlns:vm="clr-namespace:NoticiaMAUI.ViewModels"
-             Title="AgregarNoticiaView" x:DataType="vm:ViewModel">
+             Title="AgregarNoticiaView" x:DataType="vm:ViewModel" Shell.NavBarIsVisible="False">
     <Grid BackgroundColor="White">
-        <Grid.Resources>
+        <!--<Grid.Resources>
             <ResourceDictionary>
                 <Style TargetType="Label">
                     <Setter Property="FontSize" Value="15"></Setter>
@@ -26,13 +26,12 @@
 
 
             </ResourceDictionary>
-        </Grid.Resources>
+        </Grid.Resources>-->
 
         <Grid.RowDefinitions>
             <RowDefinition Height="80" ></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition ></RowDefinition>
-            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="80" ></RowDefinition>
         </Grid.RowDefinitions>
 
 
@@ -44,16 +43,14 @@
                 <ColumnDefinition ></ColumnDefinition>
 
             </Grid.ColumnDefinitions>
-            <Image Source="yalavi.png"
-                       WidthRequest="50"
-                       HorizontalOptions="Start"
-                       Margin="20,0"></Image>
-            <Label Grid.Column="1"
-                      VerticalOptions="CenterAndExpand"
-                      HorizontalOptions="Start"
+           
+            <Label Grid.ColumnSpan="2" 
+                      VerticalOptions="Center"
+                      HorizontalTextAlignment="Center"
+                      HorizontalOptions="Center"
                       FontSize="25"
                       CharacterSpacing="1"
-                      Margin="0,10,0,5"
+                     
                       TextColor="White"
                       FontFamily="PoppinsRegular"
                   >AGREGAR NOTICIA</Label>
@@ -79,12 +76,13 @@
                     <ColumnDefinition Width="200"></ColumnDefinition>
                     <ColumnDefinition Width="150"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Image Source="{Binding noticiass.Imagen}" 
+                <Image Source="{Binding ImagePath}" 
                        WidthRequest="100" 
                        HeightRequest="150"
                        />
                 <Button Grid.Column="1"
-                        Text="{Binding SeleccionarImagenCommand}"
+                        Command="{Binding SeleccionarImagenCommand}"
+                        Text="xd"
                         BackgroundColor="#1b729f"
                         HeightRequest="80"
                         WidthRequest="150"
@@ -113,9 +111,10 @@
 
         </HorizontalStackLayout>
 
-        <Border Grid.Row="3"
+        <Border Grid.Row="2" VerticalOptions="End"
                 BackgroundColor="#902724"
-                Margin="0"
+                Margin="0,0"
+                HeightRequest="80"
                 WidthRequest="500">
 
         </Border>
