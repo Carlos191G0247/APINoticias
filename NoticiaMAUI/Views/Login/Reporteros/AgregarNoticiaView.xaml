@@ -30,14 +30,14 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="80" ></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition ></RowDefinition>
             <RowDefinition Height="80" ></RowDefinition>
         </Grid.RowDefinitions>
 
 
-
+         <!--//grid 1-->
         <Grid Padding="10"
-                  BackgroundColor="#902724">
+                  BackgroundColor="#c92a2e">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"></ColumnDefinition>
                 <ColumnDefinition ></ColumnDefinition>
@@ -56,31 +56,31 @@
                   >AGREGAR NOTICIA</Label>
         </Grid>
 
+        <ScrollView Grid.Row="1">
+            <StackLayout 
+                     >
 
-        <StackLayout Grid.Row="1"
-                     Margin="10,30,10,0"
-                     VerticalOptions="CenterAndExpand">
 
-
-            <Label>Titulo</Label>
-            <Entry Text="{Binding noticiass.Titulo}"></Entry>
-            <Label>Autor</Label>
-            <Entry Text="{Binding noticiass.Autor}"></Entry>
-            <Label>Contenido</Label>
-            <Entry HeightRequest="100"
+                <Label>Titulo</Label>
+                <Entry Text="{Binding noticiass.Titulo}"></Entry>
+                <Label>Autor</Label>
+                <Entry Text="{Binding noticiass.Autor}"></Entry>
+                <Label>Contenido</Label>
+                <Entry HeightRequest="100"
                    Text="{Binding noticiass.Contenido}"></Entry>
-            <Label>Imagen</Label>
-            <Grid 
+                <Label>Imagen</Label>
+                <Grid 
                   >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="200"></ColumnDefinition>
-                    <ColumnDefinition Width="150"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Image Source="{Binding ImagePath}" 
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="{Binding ImagePath}" 
                        WidthRequest="100" 
-                       HeightRequest="150"
+                       HeightRequest="100"
                        />
-                <Button Grid.Column="1"
+                    <Button Grid.Column="1"
                         Command="{Binding SeleccionarImagenCommand}"
                         Text="xd"
                         BackgroundColor="#1b729f"
@@ -91,10 +91,29 @@
                        VerticalOptions="CenterAndExpand"
                       
                         />
-            </Grid>
-            <Label>Fecha</Label>
-            <DatePicker Date="{Binding noticiass.Fecha}"></DatePicker>
-        </StackLayout>
+                    
+                </Grid>
+                <Label>Fecha</Label>
+                
+                <DatePicker Date="{Binding noticiass.Fecha}"></DatePicker>
+                <HorizontalStackLayout 
+                               Grid.Row="2"
+                               
+                               >
+                    <Button Text="Agregar"
+                    Command="{Binding AgregarNotciaCommand}" 
+                    ></Button>
+                    <Button Text="Cancelar"
+                       
+                        BackgroundColor="#1a323e"
+                        ></Button>
+
+                </HorizontalStackLayout>
+            </StackLayout>
+        </ScrollView>
+
+       <!--contenedor 2-->
+     
         <HorizontalStackLayout 
                                Grid.Row="2"
                                HorizontalOptions="CenterAndExpand"
@@ -111,13 +130,7 @@
 
         </HorizontalStackLayout>
 
-        <Border Grid.Row="2" VerticalOptions="End"
-                BackgroundColor="#902724"
-                Margin="0,0"
-                HeightRequest="80"
-                WidthRequest="500">
-
-        </Border>
+        <Rectangle Grid.Row="2" BackgroundColor="#c92a2e" ></Rectangle>
     </Grid>
 
 </ContentPage>
