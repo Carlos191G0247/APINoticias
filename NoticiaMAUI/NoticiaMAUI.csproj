@@ -43,6 +43,9 @@
 		<MauiImage Update="Resources\Images\teloruego.PNG">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</MauiImage>
+		<MauiImage Update="Resources\Images\usuario2.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</MauiImage>
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
@@ -60,6 +63,7 @@
 	  <None Remove="Resources\Images\logo2.jpg" />
 	  <None Remove="Resources\Images\teloruego.PNG" />
 	  <None Remove="Resources\Images\usuario.png" />
+	  <None Remove="Resources\Images\usuario2.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -93,6 +97,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\MainView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\UsuariosView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

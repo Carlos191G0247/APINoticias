@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NoticiaMAUI.Views.UsuariosView"
+             Title="UsuariosView">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid BackgroundColor="#dd0000"
+             
+              HeightRequest="50">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition ></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+            <Image Source="teloruego.png"
+                      WidthRequest="200"
+                       HorizontalOptions="CenterAndExpand"
+                       ></Image>
+
+
+            <Label Grid.Column="1"
+                       FontSize="30"
+                       Margin="0,-15,5,0"
+                       TextColor="White"
+                       
+                       >...</Label>
+
+
+        </Grid>
+
+        <StackLayout Grid.Row="1">
+            <Border Margin="0"
+                HeightRequest="150"
+                BackgroundColor="White"
+              
+                WidthRequest="400"
+                  Stroke="#1b729f"
+               StrokeThickness="3">
+
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid HeightRequest="100" 
+                          >
+                        <Image Aspect="AspectFill"  
+                               Source="usuario2.png"
+                               Margin="8,5,0,0"
+                               
+                              ></Image>
+                    </Grid>
+                    <VerticalStackLayout Grid.Column="1"
+                                     HorizontalOptions="Start"
+                                     VerticalOptions="Center">
+                        <Label FontSize="30" 
+                            Text="Juanita Perez" 
+                            TextColor="Black"
+                            LineBreakMode="WordWrap"
+                            Padding="0,0,50,0"
+                            FontFamily="PoppinsRegular"
+                               
+                               TextTransform="Uppercase"></Label>
+
+                        <Label  FontSize="15" 
+                            Text="191g0249@gmail.com"
+                            TextColor="Black"
+                            BackgroundColor="#f7d281"
+                            FontAttributes="Bold"
+                            HorizontalTextAlignment="Start"
+                            Padding="1"
+                            Margin="0,0,0,0"
+                            ></Label>
+
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+        </StackLayout>
+        <Border Grid.Row="2"
+                WidthRequest="80"
+                HeightRequest="80"
+                StrokeShape="RoundRectangle 40"
+                BackgroundColor="#f23c27"
+                HorizontalOptions="EndAndExpand"
+                VerticalOptions="EndAndExpand"
+                Margin="0,0,20,50">
+            <Button BackgroundColor="Transparent"
+                    Margin="0"
+                    Text="+"
+                    FontSize="30"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    ></Button>
+        </Border>
+    </Grid>
+</ContentPage>
