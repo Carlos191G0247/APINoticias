@@ -46,6 +46,9 @@
 		<MauiImage Update="Resources\Images\usuario2.png">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</MauiImage>
+		<MauiImage Update="Resources\Images\yalavi.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</MauiImage>
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
@@ -64,6 +67,7 @@
 	  <None Remove="Resources\Images\teloruego.PNG" />
 	  <None Remove="Resources\Images\usuario.png" />
 	  <None Remove="Resources\Images\usuario2.png" />
+	  <None Remove="Resources\Images\yalavi.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -87,6 +91,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\AgregarUsuarioView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\DetallesNoticia.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\EditarNoticiaView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\EditarUsuarioView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Login\Reporteros\AgregarNoticiaView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NoticiaMAUI.Views.DetallesNoticia"
+             Title="DetallesNoticia"
+             Shell.NavBarIsVisible="False">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid BackgroundColor="#dd0000"
+              HeightRequest="55"
+              >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition  Width="auto"></ColumnDefinition>
+                <ColumnDefinition ></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0"
+                       FontSize="25"
+                       TextColor="White"
+                       BackgroundColor="Transparent"
+                        Text="&#8592;"
+                    HorizontalOptions="StartAndExpand"
+                    VerticalOptions="Center"
+                    FontAttributes="Bold"></Button>
+            <Image Source="teloruego.png"
+                      WidthRequest="200"
+                       HorizontalOptions="CenterAndExpand"
+                   Margin="0,0,50,0"
+                      Grid.Column="1" ></Image>
+        </Grid>
+        <ScrollView Grid.Row="1"
+                   >
+            <Grid 
+              Padding="0"
+              HorizontalOptions="CenterAndExpand"
+              
+              Margin="0,20,0,15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="275"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label FontFamily="BuiltRegular"
+                   FontSize="40"
+                   LineBreakMode="WordWrap"
+                   HorizontalTextAlignment="Center"
+                   Margin="5,0,5,0">Hola esta es mi noticia</Label>
+                <HorizontalStackLayout Grid.Row="1"
+                         BackgroundColor="#f7d281"
+                                   HeightRequest="35">
+                    <Label FontFamily="MontserratRegular"
+                   FontAttributes="Italic"
+                   FontSize="15"
+                   VerticalOptions="CenterAndExpand">By Panchita lopez</Label>
+                    <Label 
+                   HorizontalOptions="EndAndExpand"
+                   VerticalTextAlignment="Center"
+                   Margin="180,0,0,0"
+                   BackgroundColor="#f7d281">06/06/2023</Label>
+                </HorizontalStackLayout>
+
+
+
+                <Image Source="spiderman.jpg"
+                       Aspect="AspectFit"
+                       Grid.Row="2"
+                       ></Image>
+
+
+
+                <Label FontSize="20"
+                   Margin="5,0,0,0"
+                   Grid.Row="3"
+                   FontFamily="MontserratRegular"
+                   >
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam iaculis facilisis tortor, a volutpat nisl pulvinar id. Nulla at diam leo. Curabitur lobortis dolor ut tortor feugiat dictum. Nulla sodales, lorem quis hendrerit suscipit, enim nunc consectetur ante, in semper lorem urna id enim. In fermentum vitae lectus eget vulputate. Etiam eget purus volutpat, varius nisl dignissim, tempus diam. Quisque sed purus vel ipsum bibendum commodo vestibulum a orci. Donec cursus, sem ac bibendum iaculis, est elit ultrices felis, eu eleifend justo massa et magna.
+
+
+                </Label>
+            </Grid>
+        </ScrollView>
+    </Grid>
+</ContentPage>

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="NoticiaMAUI.Views.AgregarNoticiaView"
-             xmlns:vm="clr-namespace:NoticiaMAUI.ViewModels"
-             Title="AgregarNoticiaView" x:DataType="vm:ViewModel" Shell.NavBarIsVisible="False">
+             x:Class="NoticiaMAUI.Views.EditarUsuarioView"
+             Title="EditarUsuarioView">
     <Grid BackgroundColor="White">
         <Grid.Resources>
             <ResourceDictionary>
@@ -35,7 +34,7 @@
         </Grid.RowDefinitions>
 
 
-         <!--//grid 1-->
+        <!--//grid 1-->
         <Grid Padding="10"
                   BackgroundColor="#c92a2e">
             <Grid.ColumnDefinitions>
@@ -54,7 +53,7 @@
                       Margin="0,10,0,0"
                       TextColor="White"
                       FontFamily="PoppinsRegular"
-                  >AGREGAR NOTICIA</Label>
+                  >EDIAR USUARIO</Label>
         </Grid>
 
         <ScrollView Grid.Row="1"
@@ -93,10 +92,10 @@
                        VerticalOptions="CenterAndExpand"
                       
                         />
-                    
+
                 </Grid>
                 <Label>Fecha</Label>
-                
+
                 <DatePicker Date="{Binding noticiass.Fecha}"></DatePicker>
                 <HorizontalStackLayout 
                                Grid.Row="2"
@@ -118,7 +117,7 @@
             </StackLayout>
         </ScrollView>
 
-       <!--contenedor 2-->
+        <!--contenedor 2-->
 
         <!--<HorizontalStackLayout 
                                Grid.Row="2"
@@ -138,5 +137,4 @@
 
         <Rectangle Grid.Row="2" BackgroundColor="#c92a2e" ></Rectangle>
     </Grid>
-
 </ContentPage>

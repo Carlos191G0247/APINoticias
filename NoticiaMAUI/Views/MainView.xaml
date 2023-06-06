@@ -12,9 +12,8 @@
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition ></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid BackgroundColor="#dd0000"
-             
-              HeightRequest="50">
+        <Grid BackgroundColor="#dd0000"      
+              HeightRequest="55">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition ></ColumnDefinition>
                 <ColumnDefinition Width="auto"></ColumnDefinition>
@@ -52,13 +51,14 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="mo:Noticia" >
 
-                    <Grid Margin="0,5">
+                    <Grid Margin="0,5"
+                          >
                         
 
                             <Border Margin="0"
                 HeightRequest="150"
                 BackgroundColor="#1a323e"
-              
+                
                 WidthRequest="400"
                   Stroke="#1b729f"
                StrokeThickness="3">
@@ -66,7 +66,8 @@
                                 <Grid >
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="auto"></ColumnDefinition>
-                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition Width="220"></ColumnDefinition>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
 
                                     <Grid HeightRequest="100" WidthRequest="100"
@@ -82,16 +83,10 @@
                             Text="{Binding Titulo}" 
                             TextColor="White"
                             LineBreakMode="WordWrap"
-                            Padding="0,0,50,0"
+                            Padding="0,0,0,0"
                             FontFamily="BuiltBold"
                                      ></Label>
-                                        <Label  FontSize="15" 
-                            Text="{Binding Contenido}" 
-                            TextColor="White"
-                            LineBreakMode="TailTruncation"
-                           FontFamily="GeologicaLight"
-                           Padding="0,0,50,0">
-                                        </Label>
+                                        
                                         <Label  FontSize="12" 
                             Text="{Binding Fecha}"
                             TextColor="Black"
@@ -99,8 +94,17 @@
                             FontAttributes="Bold"
                             HorizontalTextAlignment="Start"
                             Padding="1"
-                            Margin="0,0,5,0"></Label>
+                            Margin="0,0,0,0"></Label>
 
+                                    </VerticalStackLayout>
+                                    <VerticalStackLayout Grid.Column="2"
+                                                         VerticalOptions="CenterAndExpand">
+                                        <Button Text="✏"
+                                                BackgroundColor="Transparent"
+                                                FontSize="30"></Button>
+                                        <Button Text="&#128465;"
+                                                 BackgroundColor="Transparent"
+                                               FontSize="30"></Button>
                                     </VerticalStackLayout>
                                 </Grid>
                             </Border>
