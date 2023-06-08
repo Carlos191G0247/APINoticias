@@ -4,9 +4,22 @@
              x:Class="NoticiaMAUI.Views.MainView"
              xmlns:vm="clr-namespace:NoticiaMAUI.ViewModels"
              xmlns:mo="clr-namespace:NoticiaMAUI.Models"
+             xmlns:converters="clr-namespace:NoticiaMAUI.Converter"
              Title="MainView" x:DataType="vm:ViewModel" 
+
              Shell.NavBarIsVisible="False"
              >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:Converter x:Key="ImageConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+
+
+
+
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
@@ -23,7 +36,6 @@
                        HorizontalOptions="CenterAndExpand"
                    Margin="40,0,0,0"
                        ></Image>
-
 
             <Button Grid.Column="1"
                        FontSize="30"
@@ -72,9 +84,9 @@
 
                                     <Grid HeightRequest="100" WidthRequest="100"
                                           >
-                                        <Image Aspect="Fill"  
-                           Source="logo.png"
-                                               Margin="8,0"></Image>
+                                        <Image Aspect="Fill"
+                           Source="{Binding Imagen, Converter={StaticResource ImageConverter}}"
+                           Margin="8,0" />
                                     </Grid>
                                     <VerticalStackLayout Grid.Column="1"
                                      HorizontalOptions="Start"

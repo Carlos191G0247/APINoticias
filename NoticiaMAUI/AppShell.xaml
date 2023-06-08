@@ -10,7 +10,7 @@
     >
 
     <ShellContent Route="Main">
-        <views:UsuariosView></views:UsuariosView>
+        <views:InicioView></views:InicioView>
     </ShellContent>
 
 </Shell>
