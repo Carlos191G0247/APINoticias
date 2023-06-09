@@ -15,6 +15,7 @@ namespace NoticiaMAUI
             Routing.RegisterRoute("//VerAgregarRep", typeof(AgregarNoticiaView));
             Routing.RegisterRoute("//MainView", typeof(MainView));
             Routing.RegisterRoute("//LoginView", typeof(LoginView));
+            Routing.RegisterRoute("//NoticiaCompleta", typeof(VerNoticiaCompletaView));
         }
     }
 }

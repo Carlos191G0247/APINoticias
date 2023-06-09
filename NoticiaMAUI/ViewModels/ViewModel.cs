@@ -15,6 +15,7 @@ namespace NoticiaMAUI.ViewModels
     public class ViewModel : INotifyPropertyChanged
     {
         public Command VerInicioSesionView { get; set; }
+        public Command VerNoticiaCompletaCommand { get; set; }
         public Command VerAgregarNoticiaView { get; set; }
         public ICommand SeleccionarImagenCommand { get; }
         public Command AgregarNotciaCommand { get; set; }
@@ -42,6 +43,7 @@ namespace NoticiaMAUI.ViewModels
         {
             // Para todos
             VerInicioSesionView = new Command(VerSesion);
+            VerNoticiaCompletaCommand = new Command<Noticia>(VerNoticiaCompleta);
             // Para Reporteros
             VerAgregarNoticiaView = new Command(VerAgregarRep);
             AgregarNotciaCommand = new Command(AgregarNoticia);
@@ -50,6 +52,13 @@ namespace NoticiaMAUI.ViewModels
 
             CargarNoticias();
         }
+
+        private async void VerNoticiaCompleta(Noticia noticia)
+        {
+            noticiass = noticia;
+            await Shell.Current.GoToAsync("//NoticiaCompleta");
+        }
+
 
         private async Task SeleccionarImagen()
         {
@@ -84,7 +93,9 @@ namespace NoticiaMAUI.ViewModels
         }
 
         public async void AgregarNoticia()
-        {
+
+        { 
+            noticiass.Fecha = DateTime.Now;
             noticiass.Imagen = ConvertImageToBase64(ImagePath);
 
             NoticiaList.Add(noticiass);

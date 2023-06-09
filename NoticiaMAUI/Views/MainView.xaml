@@ -5,131 +5,98 @@
              xmlns:vm="clr-namespace:NoticiaMAUI.ViewModels"
              xmlns:mo="clr-namespace:NoticiaMAUI.Models"
              xmlns:converters="clr-namespace:NoticiaMAUI.Converter"
-             Title="MainView" x:DataType="vm:ViewModel" 
+             Title="MainView" x:DataType="vm:ViewModel"
+             Shell.NavBarIsVisible="False" x:Name="list">
 
-             Shell.NavBarIsVisible="False"
-             >
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:Converter x:Key="ImageConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
-
-
-
-
-
-    <Grid >
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition ></RowDefinition>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
         </Grid.RowDefinitions>
-        <Grid BackgroundColor="#dd0000"      
-              HeightRequest="55">
+        <Grid BackgroundColor="#dd0000" HeightRequest="55">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition ></ColumnDefinition>
-                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition />
+                <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
             <Image Source="teloruego.png"
-                      WidthRequest="200"
-                       HorizontalOptions="CenterAndExpand"
-                   Margin="40,0,0,0"
-                       ></Image>
-
+                   WidthRequest="200"
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="40,0,0,0" />
             <Button Grid.Column="1"
-                       FontSize="30"
-                       Margin="0,-7,5,0"
-                       TextColor="White"
-                       BackgroundColor="Transparent"
-                        Text="☰"
-                        VerticalOptions="Center"
-                    Command="{Binding VerInicioSesionView}"
-                    
-                       
-                       ></Button>
-
-
+                    FontSize="30"
+                    Margin="0,-7,5,0"
+                    TextColor="White"
+                    BackgroundColor="Transparent"
+                    Text="☰"
+                    VerticalOptions="Center"
+                    Command="{Binding VerInicioSesionView}" />
         </Grid>
-        <ScrollView Grid.Row="1"
-                    Margin="5">
-
-        <CollectionView  ItemsSource="{Binding NoticiaList}">
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical">
-                </GridItemsLayout>
-            </CollectionView.ItemsLayout>
-
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="mo:Noticia" >
-
-                    <Grid Margin="0,5"
-                          >
-                        
-
+        <ScrollView Grid.Row="1" Margin="5">
+            <CollectionView ItemsSource="{Binding NoticiaList}" x:Name="myCollectionView">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="mo:Noticia">
+                        <Grid Margin="0,5">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference list}, Path=BindingContext.VerNoticiaCompletaCommand}" CommandParameter="{Binding .}" />
+                            </Grid.GestureRecognizers>
                             <Border Margin="0"
-                HeightRequest="150"
-                BackgroundColor="#1a323e"
-                
-                WidthRequest="400"
-                  Stroke="#1b729f"
-               StrokeThickness="3">
-
-                                <Grid >
+                                    HeightRequest="150"
+                                    BackgroundColor="#1a323e"
+                                    WidthRequest="400"
+                                    Stroke="#1b729f"
+                                    StrokeThickness="3">
+                                <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto"></ColumnDefinition>
-                                        <ColumnDefinition Width="220"></ColumnDefinition>
-                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="220" />
+                                        <ColumnDefinition Width="auto" />
                                     </Grid.ColumnDefinitions>
-
-                                    <Grid HeightRequest="100" WidthRequest="100"
-                                          >
+                                    <Grid HeightRequest="100" WidthRequest="100">
                                         <Image Aspect="Fill"
-                           Source="{Binding Imagen, Converter={StaticResource ImageConverter}}"
-                           Margin="8,0" />
+                                               Source="{Binding Imagen, Converter={StaticResource ImageConverter}}"
+                                               Margin="8,0" />
                                     </Grid>
                                     <VerticalStackLayout Grid.Column="1"
-                                     HorizontalOptions="Start"
-                                     VerticalOptions="Center">
-                                        <Label FontSize="20" 
-                            Text="{Binding Titulo}" 
-                            TextColor="White"
-                            LineBreakMode="WordWrap"
-                            Padding="0,0,0,0"
-                            FontFamily="BuiltBold"
-                                     ></Label>
-                                        
-                                        <Label  FontSize="12" 
-                            Text="{Binding Fecha}"
-                            TextColor="Black"
-                            BackgroundColor="#f7d281"
-                            FontAttributes="Bold"
-                            HorizontalTextAlignment="Start"
-                            Padding="1"
-                            Margin="0,0,0,0"></Label>
-
+                                                         HorizontalOptions="Start"
+                                                         VerticalOptions="Center">
+                                        <Label FontSize="20"
+                                               Text="{Binding Titulo}"
+                                               TextColor="White"
+                                               LineBreakMode="WordWrap"
+                                               Padding="0,0,0,0"
+                                               FontFamily="BuiltBold" />
+                                        <Label FontSize="12"
+                                               Text="{Binding Fecha, StringFormat='{0:d}'}"
+                                               TextColor="Black"
+                                               BackgroundColor="#f7d281"
+                                               FontAttributes="Bold"
+                                               HorizontalTextAlignment="Start"
+                                               Padding="1"
+                                               Margin="0,0,0,0" />
                                     </VerticalStackLayout>
-                                    <VerticalStackLayout Grid.Column="2"
-                                                         VerticalOptions="CenterAndExpand">
+                                    <VerticalStackLayout Grid.Column="2" VerticalOptions="CenterAndExpand">
                                         <Button Text="✏"
                                                 BackgroundColor="Transparent"
-                                                FontSize="30"></Button>
+                                                FontSize="30" />
                                         <Button Text="&#128465;"
-                                                 BackgroundColor="Transparent"
-                                               FontSize="30"></Button>
+                                                BackgroundColor="Transparent"
+                                                FontSize="30" />
                                     </VerticalStackLayout>
                                 </Grid>
                             </Border>
-
-
-
                         </Grid>
-
-
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </ScrollView>
-
     </Grid>
 </ContentPage>

@@ -19,5 +19,11 @@ namespace NoticiaMAUI.Models
         public string Imagen { get; set; } = null!;
 
         public DateTime Fecha { get; set; }
+        public Noticia()
+        {
+            Fecha = DateTime.Now;
+        }
     }
+
+   
 }

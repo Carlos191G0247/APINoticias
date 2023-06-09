@@ -1,20 +1,16 @@
 namespace NoticiaMAUI.Views;
 
-public partial class MainView : ContentPage
+public partial class VerNoticiaCompletaView : ContentPage
 {
-	public MainView()
+	public VerNoticiaCompletaView()
 	{
 		InitializeComponent();
-		BindingContext = App.ViewModel;
-	}
+        BindingContext = App.ViewModel;
+
+    }
     protected override bool OnBackButtonPressed()
     {
         Shell.Current.GoToAsync("//MainView");
         return true; // Indica que se ha manejado el evento de retroceso
-    }
-
-    private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
-    {
-
     }
 }

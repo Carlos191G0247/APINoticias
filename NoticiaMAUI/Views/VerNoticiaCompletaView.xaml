@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NoticiaMAUI.Views.VerNoticiaCompletaView"
+             xmlns:converters="clr-namespace:NoticiaMAUI.Converter"
+             Title="VerNoticiaCompletaView" >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:Converter x:Key="ImageConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <StackLayout BackgroundColor="Red">
+        <Label Text="{Binding noticiass.Titulo}"
+                   FontSize="20"
+                   TextColor="Black"
+                   FontAttributes="Bold"
+                   Margin="10, 20, 10, 0" />
+        <Label Text="{Binding noticiass.Autor}"
+                   FontSize="20"
+                   TextColor="Black"
+                   FontAttributes="Bold"
+                   Margin="10, 20, 10, 0" />
+
+        <Label Text="{Binding noticiass.Contenido}"
+                   FontSize="16"
+                   Margin="10, 10, 10, 0" />
+
+        <Image Source="{Binding noticiass.Imagen, Converter={StaticResource ImageConverter}}"
+                   
+                   Margin="10, 10, 10, 0" />
+        <Label Text="{Binding noticiass.Fecha,StringFormat='{0:d}'}"
+                   FontSize="20"
+                   TextColor="Black"
+                   FontAttributes="Bold"
+                   Margin="10, 20, 10, 0" />
+        
+    </StackLayout>
+   
+</ContentPage>
