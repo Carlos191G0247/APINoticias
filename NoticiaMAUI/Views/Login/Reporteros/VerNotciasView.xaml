@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="NoticiaMAUI.Views.MainView"
+             x:Class="NoticiaMAUI.Views.Login.Reporteros.VerNotciasView"
              xmlns:vm="clr-namespace:NoticiaMAUI.ViewModels"
-             xmlns:mo="clr-namespace:NoticiaMAUI.Models"
              xmlns:converters="clr-namespace:NoticiaMAUI.Converter"
-             Title="MainView" x:DataType="vm:ViewModel"
-             Shell.NavBarIsVisible="False" x:Name="list">
+             xmlns:mo="clr-namespace:NoticiaMAUI.Models" x:DataType="vm:ViewModel"
+             Title="VerNotciasView" x:Name="list">
 
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:Converter x:Key="ImageConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -82,6 +80,19 @@
                                                HorizontalTextAlignment="Start"
                                                Padding="1"
                                                Margin="0,0,0,0" />
+                                    </VerticalStackLayout>
+                                    <VerticalStackLayout Grid.Column="2" VerticalOptions="CenterAndExpand">
+                                        <Button Text="✏"
+                                                BackgroundColor="Transparent"
+                                                FontSize="30"                                               
+                                                Command="{Binding Source={x:Reference list}, Path=BindingContext.VerEditarNoticiaCommand}" CommandParameter="{Binding .}"                                                        
+                                                />
+                                        
+                                        <Button Text="&#128465;"
+                                                BackgroundColor="Transparent"
+                                                FontSize="30"
+                                                Command="{Binding Source={x:Reference list}, Path=BindingContext.EliminarNoticiaCommand}" CommandParameter="{Binding .}"
+                                                />
                                     </VerticalStackLayout>
                                 </Grid>
                             </Border>

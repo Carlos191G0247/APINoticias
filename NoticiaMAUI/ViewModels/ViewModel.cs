@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using NoticiaMAUI.Service;
 using Microsoft.Maui.Controls;
+using NoticiaMAUI.Views;
 
 namespace NoticiaMAUI.ViewModels
 {
@@ -16,7 +17,11 @@ namespace NoticiaMAUI.ViewModels
     {
         public Command VerInicioSesionView { get; set; }
         public Command VerNoticiaCompletaCommand { get; set; }
+        public Command VerEditarNoticiaCommand { get; set; }
+        public Command EditarNoticiaCommand { get; set; }
+        public Command EliminarNoticiaCommand { get; set; }
         public Command VerAgregarNoticiaView { get; set; }
+        public Command VerNoticiasReporteroCommand { get; set; }
         public ICommand SeleccionarImagenCommand { get; }
         public Command AgregarNotciaCommand { get; set; }
 
@@ -47,10 +52,69 @@ namespace NoticiaMAUI.ViewModels
             // Para Reporteros
             VerAgregarNoticiaView = new Command(VerAgregarRep);
             AgregarNotciaCommand = new Command(AgregarNoticia);
+            VerEditarNoticiaCommand = new Command<Noticia>(VerEditarNoticia);
+            VerNoticiasReporteroCommand =new Command(VerNoticiasReportero);
+            EditarNoticiaCommand = new Command(EditarNoticia);
+            EliminarNoticiaCommand = new Command<Noticia>(EliminarNoticia);
             // Imagen
             SeleccionarImagenCommand = new Command(async () => await SeleccionarImagen());
 
             CargarNoticias();
+        }
+
+
+        private async void VerEditarNoticia(Noticia n)
+        {
+            noticiass = n;
+            noticiass.Titulo = n.Titulo;
+            noticiass.Autor = n.Autor;
+            noticiass.Contenido = n.Contenido;
+            noticiass.Imagen = n.Imagen;
+            noticiass.Fecha = n.Fecha;
+
+
+            EditarNoticiaView editar = new EditarNoticiaView
+            {
+                BindingContext = this,
+            };
+            await Shell.Current.GoToAsync("//EditarNoticia");
+        }
+
+        //private async void VerEditarNoticia(Noticia n)
+        //{
+        //    // Asignar la noticia a la instancia actual
+        //    noticiass = n;
+
+        //    // Crear una instancia de EditarNoticiaView y pasar la noticia como parámetro
+        //    EditarNoticiaView editar = new EditarNoticiaView
+        //    {
+        //        BindingContext = noticiass,
+        //    };
+
+        //    await Shell.Current.GoToAsync("//EditarNoticia");
+        //}
+
+
+
+        public async void EditarNoticia()
+        {
+            noticiass.Imagen = ConvertImageToBase64(ImagePath);
+            await noticiaserver.UpdateNotcia(noticiass);
+            CargarNoticias();
+        }
+
+        public async void EliminarNoticia(Noticia n)
+        {
+
+            NoticiaList.Remove(n);
+            await noticiaserver.DeleteNoticia(n);
+            Actualizar(nameof(NoticiaList));
+            CargarNoticias();
+        }
+
+        private async void VerNoticiasReportero()
+        {
+            await Shell.Current.GoToAsync("VerNoticiaReport");
         }
 
         private async void VerNoticiaCompleta(Noticia noticia)

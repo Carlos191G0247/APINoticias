@@ -53,5 +53,18 @@ namespace NoticiaMAUI.Service
 
             return true;
         }
+        public async Task<bool> UpdateNotcia(Noticia n)
+        {
+            var json = JsonConvert.SerializeObject(n);
+            var response = await client.PutAsync("api/Noticia", new StringContent(json, Encoding.UTF8,
+                "application/json"));
+            return true;
+        } 
+        public async Task<bool> DeleteNoticia(Noticia n)
+        {
+            var response = await client.DeleteAsync("api/Noticia/" + n.Id);
+           
+            return true;
+        }
     }
 }

@@ -2,7 +2,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NoticiaMAUI.Views.EditarNoticiaView"
+             xmlns:converters="clr-namespace:NoticiaMAUI.Converter"
              Title="EditarNoticiaView">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:Converter x:Key="ImageConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <Grid BackgroundColor="White">
         <Grid.Resources>
             <ResourceDictionary>
@@ -77,12 +83,17 @@
                         <ColumnDefinition Width="auto"></ColumnDefinition>
                         <ColumnDefinition Width="auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
+                    <Image x:Name="Imagen12" Source="{Binding noticiass.Imagen,Converter={StaticResource ImageConverter}}" 
+                       WidthRequest="100" 
+                       HeightRequest="150"
+                       />
                     <Image Source="{Binding ImagePath}" 
                        WidthRequest="100" 
                        HeightRequest="150"
                        />
-                    <Button Grid.Column="1"
+                    <Button x:Name="boton" Grid.Column="1"
                         Command="{Binding SeleccionarImagenCommand}"
+                        Clicked="Button_Clicked"    
                         Text="xd"
                         BackgroundColor="#1b729f"
                         HeightRequest="80"
@@ -103,8 +114,8 @@
                                VerticalOptions="EndAndExpand"
                                Margin="0,0,0,10"
                                >
-                    <Button Text="Agregar"
-                    Command="{Binding AgregarNotciaCommand}" 
+                    <Button Text="Editar"
+                    Command="{Binding EditarNoticiaCommand}" 
                      BackgroundColor="#1b729f"
                             
                             CornerRadius="0"></Button>
@@ -116,25 +127,6 @@
                 </HorizontalStackLayout>
             </StackLayout>
         </ScrollView>
-
-        <!--contenedor 2-->
-
-        <!--<HorizontalStackLayout 
-                               Grid.Row="2"
-                               HorizontalOptions="CenterAndExpand"
-                               VerticalOptions="CenterAndExpand"
-                               Padding="10"
-                               >
-            <Button Text="Agregar"
-                    Command="{Binding AgregarNotciaCommand}" 
-                     BackgroundColor="#1b729f"></Button>
-            <Button Text="Cancelar"
-                       
-                        BackgroundColor="#1a323e"
-                        ></Button>
-
-        </HorizontalStackLayout>-->
-
         <Rectangle Grid.Row="2" BackgroundColor="#c92a2e" ></Rectangle>
     </Grid>
 </ContentPage>

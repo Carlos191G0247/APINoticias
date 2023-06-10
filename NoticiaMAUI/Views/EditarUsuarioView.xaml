@@ -116,25 +116,6 @@
                 </HorizontalStackLayout>
             </StackLayout>
         </ScrollView>
-
-        <!--contenedor 2-->
-
-        <!--<HorizontalStackLayout 
-                               Grid.Row="2"
-                               HorizontalOptions="CenterAndExpand"
-                               VerticalOptions="CenterAndExpand"
-                               Padding="10"
-                               >
-            <Button Text="Agregar"
-                    Command="{Binding AgregarNotciaCommand}" 
-                     BackgroundColor="#1b729f"></Button>
-            <Button Text="Cancelar"
-                       
-                        BackgroundColor="#1a323e"
-                        ></Button>
-
-        </HorizontalStackLayout>-->
-
         <Rectangle Grid.Row="2" BackgroundColor="#c92a2e" ></Rectangle>
     </Grid>
 </ContentPage>
