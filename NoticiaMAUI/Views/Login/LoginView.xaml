@@ -50,7 +50,7 @@
                 <Button Text="INICIAR" Style="{StaticResource BotonesNoticias}" Command="{Binding VerNoticiasReporteroCommand}" />
             </Border>
             <Border Style="{StaticResource BDegradados}" Margin="40,60,40,10">
-                <Button Text="INICIAR" Style="{StaticResource BotonesNoticias}" Command="{Binding VerAgregarNoticiaView}" />
+                <Button Text="INICIAR" Style="{StaticResource BotonesNoticias}" Command="{Binding VerUsuariosViewCommand}" />
             </Border>
 
             <Label Grid.Row="1" HorizontalTextAlignment="Center" Margin="9" TextColor="#263CFF">¿xd</Label>

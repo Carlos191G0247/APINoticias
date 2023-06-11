@@ -2,6 +2,7 @@
 using NoticiaMAUI.Views;
 using NoticiaMAUI.Views.Login;
 using NoticiaMAUI.Views.Login.Reporteros;
+using NoticiaMAUI.Views.Login.Admin;
 
 namespace NoticiaMAUI
 {
@@ -19,6 +20,7 @@ namespace NoticiaMAUI
             Routing.RegisterRoute("//NoticiaCompleta", typeof(VerNoticiaCompletaView));
             Routing.RegisterRoute("VerNoticiaReport", typeof(VerNotciasView));
             Routing.RegisterRoute("//EditarNoticia", typeof(EditarNoticiaView));
+            Routing.RegisterRoute("//VerUsuarios", typeof(VerUsuariosView));
         }
     }
 }

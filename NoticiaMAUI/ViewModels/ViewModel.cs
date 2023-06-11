@@ -22,6 +22,7 @@ namespace NoticiaMAUI.ViewModels
         public Command EliminarNoticiaCommand { get; set; }
         public Command VerAgregarNoticiaView { get; set; }
         public Command VerNoticiasReporteroCommand { get; set; }
+        public Command VerUsuariosViewCommand { get; set; }
         public ICommand SeleccionarImagenCommand { get; }
         public Command AgregarNotciaCommand { get; set; }
 
@@ -46,6 +47,8 @@ namespace NoticiaMAUI.ViewModels
 
         public ViewModel()
         {
+            //Para Admin
+            VerUsuariosViewCommand = new Command(VerUsuario);
             // Para todos
             VerInicioSesionView = new Command(VerSesion);
             VerNoticiaCompletaCommand = new Command<Noticia>(VerNoticiaCompleta);
@@ -62,6 +65,10 @@ namespace NoticiaMAUI.ViewModels
             CargarNoticias();
         }
 
+        private async void VerUsuario()
+        {
+            await Shell.Current.GoToAsync("//VerUsuarios");
+        }
 
         private async void VerEditarNoticia(Noticia n)
         {

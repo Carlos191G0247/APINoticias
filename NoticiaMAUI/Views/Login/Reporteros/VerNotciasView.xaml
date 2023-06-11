@@ -31,9 +31,9 @@
                     Margin="0,-7,5,0"
                     TextColor="White"
                     BackgroundColor="Transparent"
-                    Text="☰"
+                    Text="+"
                     VerticalOptions="Center"
-                    Command="{Binding VerInicioSesionView}" />
+                    Command="{Binding VerAgregarNoticiaView}" />
         </Grid>
         <ScrollView Grid.Row="1" Margin="5">
             <CollectionView ItemsSource="{Binding NoticiaList}" x:Name="myCollectionView">
