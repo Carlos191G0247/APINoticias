@@ -24,6 +24,12 @@ namespace APINoticias.Controllers
             var entidad = repoUsuario.Get();
             return Ok(entidad);
         }
+        [HttpGet("adminin")]
+        public IActionResult GetIdExcept()
+        {
+            var usuarios = repoUsuario.Get().Where(x=>x.Id !=1);
+            return Ok(usuarios);
+        }
         [HttpPost]
         public IActionResult Post(Usuario usuario)
         {
@@ -41,6 +47,7 @@ namespace APINoticias.Controllers
             {
                 entidad.Usuario1 = usuario.Usuario1;
                 entidad.Contraseña = usuario.Contraseña;
+                entidad.Nombre = usuario.Nombre;
             
                 repoUsuario.Update(entidad);
             }

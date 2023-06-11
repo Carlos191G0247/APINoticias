@@ -10,4 +10,6 @@ public partial class Usuario
     public string Usuario1 { get; set; } = null!;
 
     public string Contraseña { get; set; } = null!;
+
+    public string Nombre { get; set; } = null!;
 }

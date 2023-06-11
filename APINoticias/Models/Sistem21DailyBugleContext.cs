@@ -47,9 +47,7 @@ public partial class Sistem21DailyBugleContext : DbContext
             entity.Property(e => e.Fecha)
                 .HasColumnType("datetime")
                 .HasColumnName("fecha");
-            entity.Property(e => e.Imagen)
-                .HasColumnType("text")
-                .HasColumnName("imagen");
+            entity.Property(e => e.Imagen).HasColumnName("imagen");
             entity.Property(e => e.Titulo)
                 .HasMaxLength(100)
                 .HasColumnName("titulo");
@@ -67,6 +65,7 @@ public partial class Sistem21DailyBugleContext : DbContext
             entity.Property(e => e.Contraseña)
                 .HasMaxLength(100)
                 .HasColumnName("contraseña");
+            entity.Property(e => e.Nombre).HasMaxLength(100);
             entity.Property(e => e.Usuario1)
                 .HasMaxLength(100)
                 .HasColumnName("usuario");
