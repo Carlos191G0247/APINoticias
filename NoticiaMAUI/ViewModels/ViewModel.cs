@@ -27,10 +27,13 @@ namespace NoticiaMAUI.ViewModels
         public Command AgregarNotciaCommand { get; set; }
 
         readonly NoticiaService noticiaserver = new NoticiaService();
+        readonly UsuarioService usuarioserver = new UsuarioService();
 
         private string _imagePath;
         public Noticia noticiass { get; set; } = new Noticia();
+        public Usuario usuarioss { get; set; } = new Usuario();
         public ObservableCollection<Noticia> NoticiaList { get; set; } = new ObservableCollection<Noticia>();
+        public ObservableCollection<Usuario> UsuarioList { get; set; } = new ObservableCollection<Usuario>();
 
         public string ImagePath
         {
@@ -63,6 +66,7 @@ namespace NoticiaMAUI.ViewModels
             SeleccionarImagenCommand = new Command(async () => await SeleccionarImagen());
 
             CargarNoticias();
+            CargarUsuario();
         }
 
         private async void VerUsuario()
@@ -161,6 +165,12 @@ namespace NoticiaMAUI.ViewModels
 
             // Agregar las noticias obtenidas a la lista
             noticias.ForEach(x => NoticiaList.Add(x));
+        }
+        public async Task CargarUsuario()
+        {
+            var usuarios = await usuarioserver.GetUsuarios();
+            UsuarioList.Clear();
+            usuarios.ForEach(x => UsuarioList.Add(x));
         }
 
         public async void AgregarNoticia()

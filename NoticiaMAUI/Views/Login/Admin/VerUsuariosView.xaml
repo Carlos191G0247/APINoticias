@@ -1,100 +1,74 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:NoticiaMAUI.ViewModels"
+             xmlns:mo="clr-namespace:NoticiaMAUI.Models"
              x:Class="NoticiaMAUI.Views.Login.Admin.VerUsuariosView"
-             Title="VerUsuariosView">
+             Title="VerUsuariosView" x:Name="list" x:DataType="vm:ViewModel">
     <Grid>
-        <!--<Grid.RowDefinitions>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
         </Grid.RowDefinitions>
-
-        <Grid BackgroundColor="#dd0000"
-             
-              HeightRequest="50">
+        <Grid BackgroundColor="#dd0000" HeightRequest="55">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition ></ColumnDefinition>
-                <ColumnDefinition Width="auto"></ColumnDefinition>
-
+                <ColumnDefinition />
+                <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
             <Image Source="teloruego.png"
-                      WidthRequest="200"
-                       HorizontalOptions="CenterAndExpand"
-                       ></Image>
-
-
-            <Label Grid.Column="1"
-                       FontSize="30"
-                       Margin="0,-15,5,0"
-                       TextColor="White"
-                       
-                       >...</Label>
-
-
+                   WidthRequest="200"
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="40,0,0,0" />
+            <Button Grid.Column="1"
+                    FontSize="30"
+                    Margin="0,-7,5,0"
+                    TextColor="White"
+                    BackgroundColor="Transparent"
+                    Text="+"
+                    VerticalOptions="Center"
+                    Command="{Binding VerInicioSesionView}" />
         </Grid>
-
-        <StackLayout Grid.Row="1">
-            <Border Margin="0"
-                HeightRequest="150"
-                BackgroundColor="White"
-              
-                WidthRequest="400"
-                  Stroke="#1b729f"
-               StrokeThickness="3">
-
-                <Grid >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition  Width="auto"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
-                    <Grid HeightRequest="100" 
-                          >
-                        <Image Aspect="AspectFill"  
-                               Source="usuario2.png"
-                               Margin="8,5,0,0"
-                               
-                              ></Image>
-                    </Grid>
-                    <VerticalStackLayout Grid.Column="1"
-                                     HorizontalOptions="Start"
-                                     VerticalOptions="Center">
-                        <Label FontSize="30" 
-                            Text="Juanita Perez" 
-                            TextColor="Black"
-                            LineBreakMode="WordWrap"
-                            Padding="0,0,50,0"
-                            FontFamily="PoppinsRegular"
-                               
-                               TextTransform="Uppercase"></Label>
-
-                        <Label  FontSize="15" 
-                            Text="191g0249@gmail.com"
-                            TextColor="Black"
-                            BackgroundColor="#f7d281"
-                            FontAttributes="Bold"
-                            HorizontalTextAlignment="Start"
-                            Padding="1"
-                            Margin="0,0,0,0"
-                            ></Label>
-
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Grid.Column="2"
-                                                         VerticalOptions="CenterAndExpand">
-                        <Button Text="✏"
-                                                BackgroundColor="Transparent"
-                                                FontSize="30"></Button>
-                        <Button Text="&#128465;"
-                                                 BackgroundColor="Transparent"
-                                               FontSize="30"></Button>
-                    </VerticalStackLayout>
-                </Grid>
-            </Border>
-        </StackLayout>-->
-
         
-        
+        <ScrollView Grid.Row="1" Margin="5">
+            <CollectionView ItemsSource="{Binding UsuarioList}" x:Name="myCollectionView">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="mo:Usuario">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            
+                            <StackLayout Grid.Row="1">
+                                <Border Margin="0" HeightRequest="150" BackgroundColor="White" WidthRequest="400" Stroke="#1b729f" StrokeThickness="3">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition  Width="auto"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid HeightRequest="100">
+                                            <Image Aspect="AspectFill" Source="usuario2.png" Margin="8,5,0,0"></Image>
+                                        </Grid>
+                                        <VerticalStackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
+                                            <Label FontSize="30" Text="{Binding Nombre}" TextColor="Black" LineBreakMode="WordWrap" Padding="0,0,50,0" FontFamily="PoppinsRegular" TextTransform="Uppercase"></Label>
+                                            <Label FontSize="15" Text="{Binding Usuario1}" TextColor="Black" BackgroundColor="#f7d281" FontAttributes="Bold" HorizontalTextAlignment="Start" Padding="1" Margin="0,0,0,0"></Label>
+                                        </VerticalStackLayout>
+                                        <VerticalStackLayout Grid.Column="2" VerticalOptions="CenterAndExpand">
+                                            <Button Text="✏" BackgroundColor="Transparent" FontSize="30"></Button>
+                                            <Button Text="&#128465;" BackgroundColor="Transparent" FontSize="30"></Button>
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </Border>
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
     </Grid>
 </ContentPage>
