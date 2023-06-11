@@ -84,7 +84,8 @@
                    Text="{Binding noticiass.Titulo}"></Label>
                 <HorizontalStackLayout Grid.Row="1"
                          BackgroundColor="#f7d281"
-                                   HeightRequest="35">
+                                   HeightRequest="35"
+                                   >
                     <Label FontFamily="MontserratRegular"
                    FontAttributes="Italic"
                    FontSize="15"
@@ -95,6 +96,7 @@
                    HorizontalOptions="EndAndExpand"
                    VerticalTextAlignment="Center"
                    Margin="240,0,0,0"
+                   
                    BackgroundColor="#f7d281"
                    Text="{Binding noticiass.Fecha,StringFormat='{0:d}'}"></Label>
                 </HorizontalStackLayout>
