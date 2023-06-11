@@ -80,9 +80,9 @@ namespace NoticiaMAUI.ViewModels
 
         private async void EliminarUsuario(Usuario n)
         {
-            UsuarioList.Remove(n);
+            
             await usuarioserver.DeleteUsuario(n);
-            Actualizar(nameof(UsuarioList));
+            CargarUsuario();
             
         }
 
@@ -94,9 +94,10 @@ namespace NoticiaMAUI.ViewModels
         private async void AgregarUsuario()
         {
             
-            UsuarioList.Add(usuarioss);            
+                        
             await usuarioserver.Insert(usuarioss);
             await Shell.Current.GoToAsync("//VerUsuarios");
+            CargarUsuario();
 
 
 
