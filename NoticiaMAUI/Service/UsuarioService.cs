@@ -40,6 +40,30 @@ namespace NoticiaMAUI.Service
                 return new List<Usuario>();
             }
         }
+        public async Task<bool> Insert(Usuario n)
+        {
+
+
+            var json = JsonConvert.SerializeObject(n);
+            var response = await client.PostAsync("api/Usuario", new StringContent(json, Encoding.UTF8,
+                "application/json"));
+
+
+            return true;
+        }
+        public async Task<bool> UpdateUsuario(Usuario n)
+        {
+            var json = JsonConvert.SerializeObject(n);
+            var response = await client.PutAsync("api/Usuario", new StringContent(json, Encoding.UTF8,
+                "application/json"));
+            return true;
+        }
+        public async Task<bool> DeleteUsuario(Usuario n)
+        {
+            var response = await client.DeleteAsync("api/Usuario/" + n.Id);
+
+            return true;
+        }
 
     }
 }

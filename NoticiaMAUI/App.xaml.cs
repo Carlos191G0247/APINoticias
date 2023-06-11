@@ -21,6 +21,7 @@ namespace NoticiaMAUI
             Routing.RegisterRoute("VerNoticiaReport", typeof(VerNotciasView));
             Routing.RegisterRoute("//EditarNoticia", typeof(EditarNoticiaView));
             Routing.RegisterRoute("//VerUsuarios", typeof(VerUsuariosView));
+            Routing.RegisterRoute("//VerAgregarUsuario", typeof(VerAgregarUsuarioView));
         }
     }
 }

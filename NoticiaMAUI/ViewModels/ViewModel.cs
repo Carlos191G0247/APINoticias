@@ -20,11 +20,15 @@ namespace NoticiaMAUI.ViewModels
         public Command VerEditarNoticiaCommand { get; set; }
         public Command EditarNoticiaCommand { get; set; }
         public Command EliminarNoticiaCommand { get; set; }
+        public Command EliminarUsuarioCommand { get; set; }
         public Command VerAgregarNoticiaView { get; set; }
         public Command VerNoticiasReporteroCommand { get; set; }
         public Command VerUsuariosViewCommand { get; set; }
         public ICommand SeleccionarImagenCommand { get; }
+        public Command AgregarUsuarioCommand { get; set; }
+        public Command CancelarUsuarioCommand { get;set; }
         public Command AgregarNotciaCommand { get; set; }
+        public Command VerAgregarUsuarioViewCommand { get; set; }
 
         readonly NoticiaService noticiaserver = new NoticiaService();
         readonly UsuarioService usuarioserver = new UsuarioService();
@@ -52,6 +56,11 @@ namespace NoticiaMAUI.ViewModels
         {
             //Para Admin
             VerUsuariosViewCommand = new Command(VerUsuario);
+            VerAgregarUsuarioViewCommand = new Command(VerAgregarUsuario);
+            AgregarUsuarioCommand = new Command(AgregarUsuario);
+            CancelarUsuarioCommand = new Command(CancelarUsuario);
+            EliminarUsuarioCommand = new Command<Usuario>(EliminarUsuario);
+            
             // Para todos
             VerInicioSesionView = new Command(VerSesion);
             VerNoticiaCompletaCommand = new Command<Noticia>(VerNoticiaCompleta);
@@ -67,6 +76,35 @@ namespace NoticiaMAUI.ViewModels
 
             CargarNoticias();
             CargarUsuario();
+        }
+
+        private async void EliminarUsuario(Usuario n)
+        {
+            UsuarioList.Remove(n);
+            await usuarioserver.DeleteUsuario(n);
+            Actualizar(nameof(UsuarioList));
+            
+        }
+
+        private async void CancelarUsuario()
+        {
+            await Shell.Current.GoToAsync("//VerUsuarios");
+        }
+
+        private async void AgregarUsuario()
+        {
+            
+            UsuarioList.Add(usuarioss);            
+            await usuarioserver.Insert(usuarioss);
+            await Shell.Current.GoToAsync("//VerUsuarios");
+
+
+
+        }
+
+        private async void VerAgregarUsuario()
+        {
+            await Shell.Current.GoToAsync("//VerAgregarUsuario");
         }
 
         private async void VerUsuario()
@@ -122,6 +160,7 @@ namespace NoticiaMAUI.ViewModels
             Actualizar(nameof(NoticiaList));
             CargarNoticias();
         }
+        
 
         private async void VerNoticiasReportero()
         {
@@ -165,12 +204,15 @@ namespace NoticiaMAUI.ViewModels
 
             // Agregar las noticias obtenidas a la lista
             noticias.ForEach(x => NoticiaList.Add(x));
+
         }
         public async Task CargarUsuario()
         {
+            
             var usuarios = await usuarioserver.GetUsuarios();
             UsuarioList.Clear();
             usuarios.ForEach(x => UsuarioList.Add(x));
+            Actualizar(nameof(UsuarioList));
         }
 
         public async void AgregarNoticia()
