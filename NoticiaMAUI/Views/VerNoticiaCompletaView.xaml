@@ -10,7 +10,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     
-    <StackLayout BackgroundColor="Red">
+    <!--<StackLayout BackgroundColor="Red">
         <Label Text="{Binding noticiass.Titulo}"
                    FontSize="20"
                    TextColor="Black"
@@ -35,6 +35,89 @@
                    FontAttributes="Bold"
                    Margin="10, 20, 10, 0" />
         
-    </StackLayout>
-   
+    </StackLayout>-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid BackgroundColor="#dd0000"
+              HeightRequest="55"
+              >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition  Width="auto"></ColumnDefinition>
+                <ColumnDefinition ></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0"
+                       FontSize="25"
+                       TextColor="White"
+                       BackgroundColor="Transparent"
+                        Text="&#8592;"
+                    HorizontalOptions="StartAndExpand"
+                    VerticalOptions="Center"
+                    FontAttributes="Bold"></Button>
+            <Image Source="teloruego.png"
+                      WidthRequest="200"
+                       HorizontalOptions="CenterAndExpand"
+                   Margin="0,0,50,0"
+                      Grid.Column="1" ></Image>
+        </Grid>
+        <ScrollView Grid.Row="1"
+                   >
+            <Grid 
+              Padding="0"
+              HorizontalOptions="CenterAndExpand"
+              
+              Margin="0,20,0,15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label FontFamily="BuiltRegular"
+                   FontSize="40"
+                   LineBreakMode="WordWrap"
+                   HorizontalTextAlignment="Center"
+                   Margin="5,0,5,0"
+                   Text="{Binding noticiass.Titulo}"></Label>
+                <HorizontalStackLayout Grid.Row="1"
+                         BackgroundColor="#f7d281"
+                                   HeightRequest="35">
+                    <Label FontFamily="MontserratRegular"
+                   FontAttributes="Italic"
+                   FontSize="15"
+                   Margin="10,0,0,0"        
+                   VerticalOptions="CenterAndExpand"
+                   Text="{Binding noticiass.Autor}"></Label>
+                    <Label 
+                   HorizontalOptions="EndAndExpand"
+                   VerticalTextAlignment="Center"
+                   Margin="240,0,0,0"
+                   BackgroundColor="#f7d281"
+                   Text="{Binding noticiass.Fecha,StringFormat='{0:d}'}"></Label>
+                </HorizontalStackLayout>
+
+
+
+                <Image Source="{Binding noticiass.Imagen, Converter={StaticResource ImageConverter}}"
+                       Aspect="AspectFit"
+                       Grid.Row="2"
+                       Margin="0"></Image>
+
+
+
+                <Label FontSize="20"
+                   Margin="5,0,0,0"
+                   Grid.Row="3"
+                   FontFamily="MontserratRegular"
+                   Text="{Binding noticiass.Contenido}">
+                    
+
+
+                </Label>
+            </Grid>
+        </ScrollView>
+    </Grid>
 </ContentPage>
