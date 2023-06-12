@@ -27,6 +27,8 @@ namespace NoticiaMAUI.ViewModels
         public ICommand SeleccionarImagenCommand { get; }
         public Command AgregarUsuarioCommand { get; set; }
         public Command CancelarUsuarioCommand { get;set; }
+        public Command CancelarNoticiasCommand { get; set; }
+
         public Command AgregarNotciaCommand { get; set; }
         public Command VerAgregarUsuarioViewCommand { get; set; }
 
@@ -71,11 +73,17 @@ namespace NoticiaMAUI.ViewModels
             VerNoticiasReporteroCommand =new Command(VerNoticiasReportero);
             EditarNoticiaCommand = new Command(EditarNoticia);
             EliminarNoticiaCommand = new Command<Noticia>(EliminarNoticia);
+            CancelarNoticiasCommand = new Command(CancelarNoticia);
             // Imagen
             SeleccionarImagenCommand = new Command(async () => await SeleccionarImagen());
 
             CargarNoticias();
             CargarUsuario();
+        }
+
+        private async void CancelarNoticia(object obj)
+        {
+            await Shell.Current.GoToAsync("VerNoticiaReport");
         }
 
         private async void EliminarUsuario(Usuario n)

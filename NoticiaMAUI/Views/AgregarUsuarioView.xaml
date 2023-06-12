@@ -109,6 +109,7 @@
                             
                             CornerRadius="0"></Button>
                     <Button Text="Cancelar"
+                            
                         WidthRequest="150"
                         BackgroundColor="#1a323e"
                         CornerRadius="0"></Button>

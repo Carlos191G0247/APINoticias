@@ -120,6 +120,7 @@
                             
                             CornerRadius="0"></Button>
                     <Button Text="Cancelar"
+                        Command="{Binding CancelarNoticiasCommand}"  
                         WidthRequest="150"
                         BackgroundColor="#1a323e"
                         CornerRadius="0"></Button>

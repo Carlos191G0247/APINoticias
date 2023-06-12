@@ -9,7 +9,7 @@ public partial class AgregarNoticiaView : ContentPage
     }
     protected override bool OnBackButtonPressed()
     {
-        Shell.Current.GoToAsync("//LoginView");
+        Shell.Current.GoToAsync("VerNoticiaReport");
         return true; // Indica que se ha manejado el evento de retroceso
     }
 }
