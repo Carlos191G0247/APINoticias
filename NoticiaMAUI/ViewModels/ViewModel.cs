@@ -108,6 +108,7 @@ namespace NoticiaMAUI.ViewModels
 
         private async void VerAgregarUsuario()
         {
+
             await Shell.Current.GoToAsync("//VerAgregarUsuario");
         }
 
@@ -153,6 +154,7 @@ namespace NoticiaMAUI.ViewModels
         {
             noticiass.Imagen = ConvertImageToBase64(ImagePath);
             await noticiaserver.UpdateNotcia(noticiass);
+            await Shell.Current.GoToAsync("VerNoticiaReport");
             CargarNoticias();
         }
 
@@ -219,7 +221,8 @@ namespace NoticiaMAUI.ViewModels
 
         public async void AgregarNoticia()
 
-        { 
+        {
+            
             noticiass.Fecha = DateTime.Now;
             noticiass.Imagen = ConvertImageToBase64(ImagePath);
             await noticiaserver.Insert(noticiass);            
@@ -229,6 +232,7 @@ namespace NoticiaMAUI.ViewModels
 
         private async void VerAgregarRep()
         {
+            ImagePath = null;
             await Shell.Current.GoToAsync("//VerAgregarRep");
         }
 
