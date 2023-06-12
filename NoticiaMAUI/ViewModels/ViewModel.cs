@@ -100,15 +100,10 @@ namespace NoticiaMAUI.ViewModels
         }
 
         private async void AgregarUsuario()
-        {
-            
-                        
+        {                       
             await usuarioserver.Insert(usuarioss);
             await Shell.Current.GoToAsync("//VerUsuarios");
             CargarUsuario();
-
-
-
         }
 
         private async void VerAgregarUsuario()
@@ -162,11 +157,8 @@ namespace NoticiaMAUI.ViewModels
         }
 
         public async void EliminarNoticia(Noticia n)
-        {
-
-            NoticiaList.Remove(n);
-            await noticiaserver.DeleteNoticia(n);
-            Actualizar(nameof(NoticiaList));
+        {           
+            await noticiaserver.DeleteNoticia(n);          
             CargarNoticias();
         }
         
@@ -213,6 +205,7 @@ namespace NoticiaMAUI.ViewModels
 
             // Agregar las noticias obtenidas a la lista
             noticias.ForEach(x => NoticiaList.Add(x));
+            Actualizar(nameof(NoticiaList));
 
         }
         public async Task CargarUsuario()
@@ -229,9 +222,9 @@ namespace NoticiaMAUI.ViewModels
         { 
             noticiass.Fecha = DateTime.Now;
             noticiass.Imagen = ConvertImageToBase64(ImagePath);
-
-            NoticiaList.Add(noticiass);
-            await noticiaserver.Insert(noticiass);
+            await noticiaserver.Insert(noticiass);            
+            await Shell.Current.GoToAsync("VerNoticiaReport");
+            CargarNoticias();
         }
 
         private async void VerAgregarRep()
