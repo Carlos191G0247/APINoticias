@@ -15,6 +15,9 @@ namespace NoticiaMAUI.ViewModels
 {
     public class ViewModel : INotifyPropertyChanged
     {
+        //comandos para jwt
+
+        //otros
         public Command VerInicioSesionView { get; set; }
         public Command VerNoticiaCompletaCommand { get; set; }
         public Command VerEditarNoticiaCommand { get; set; }
@@ -133,23 +136,6 @@ namespace NoticiaMAUI.ViewModels
             };
             await Shell.Current.GoToAsync("//EditarNoticia");
         }
-
-        //private async void VerEditarNoticia(Noticia n)
-        //{
-        //    // Asignar la noticia a la instancia actual
-        //    noticiass = n;
-
-        //    // Crear una instancia de EditarNoticiaView y pasar la noticia como parámetro
-        //    EditarNoticiaView editar = new EditarNoticiaView
-        //    {
-        //        BindingContext = noticiass,
-        //    };
-
-        //    await Shell.Current.GoToAsync("//EditarNoticia");
-        //}
-
-
-
         public async void EditarNoticia()
         {
             noticiass.Imagen = ConvertImageToBase64(ImagePath);
