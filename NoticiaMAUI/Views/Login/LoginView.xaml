@@ -49,11 +49,9 @@
             <Border Style="{StaticResource BDegradados}" Margin="40,60,40,10">
                 <Button Text="INICIAR" Style="{StaticResource BotonesNoticias}" Command="{Binding IniciarSesionCoomand}" />
             </Border>
-            <Border Style="{StaticResource BDegradados}" Margin="40,60,40,10">
-                <Button Text="INICIAR" Style="{StaticResource BotonesNoticias}" Command="{Binding VerUsuariosViewCommand}" />
-            </Border>
 
-            <Label Grid.Row="1" HorizontalTextAlignment="Center" Margin="9" TextColor="#263CFF">¿xd</Label>
+
+            <Label Grid.Row="1" Text="{Binding Mensaje}" HorizontalTextAlignment="Center" Margin="9" TextColor="#263CFF"></Label>
         </VerticalStackLayout>
 
         <Rectangle Grid.Row="3" VerticalOptions="End" Style="{StaticResource Rdegradado}" />

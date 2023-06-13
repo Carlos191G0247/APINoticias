@@ -109,6 +109,7 @@ namespace NoticiaMAUI.ViewModels
 
         private async void IniciarSesion()
         {
+
             try
             {
                 if (Connectivity.Current.NetworkAccess == NetworkAccess.Internet)
@@ -118,6 +119,7 @@ namespace NoticiaMAUI.ViewModels
                     {
                         Mensaje = "Nombre de usuario o contraseña incorrectas";
                     }
+                    
                     else
                     {
                         var userIdClaim = _authService.Claims.FirstOrDefault(x => x.Type == "Id");
@@ -127,7 +129,10 @@ namespace NoticiaMAUI.ViewModels
                             var userId = userIdClaim.Value;
                             if (userId == "1")
                             {
+                                usuarioss.Contraseña = "";
+                                usuarioss.Usuario1="";
                                 await Shell.Current.GoToAsync("//VerUsuarios");
+                                
                             }
                             else
                             {
@@ -140,6 +145,7 @@ namespace NoticiaMAUI.ViewModels
                             // Manejar la situación según tus necesidades
                         }
                     }
+                    
                 }
                 else
                 {
@@ -147,11 +153,13 @@ namespace NoticiaMAUI.ViewModels
                 }
 
                 Actualizar(nameof(Mensaje));
+                Mensaje = " ";
             }
             catch (Exception ex)
             {
                 Mensaje = ex.Message;
                 Actualizar(nameof(Mensaje));
+                Mensaje="";
             }
         }
 
@@ -176,6 +184,7 @@ namespace NoticiaMAUI.ViewModels
 
         private async void AgregarUsuario()
         {
+            
             try
             {
                 if (string.IsNullOrEmpty(usuarioss.Nombre))
@@ -210,6 +219,7 @@ namespace NoticiaMAUI.ViewModels
             {
                 Mensaje = "Error: " + ex.Message;
                 Actualizar(nameof(Mensaje));
+                Mensaje = "";
             }
 
             
