@@ -29,7 +29,7 @@
                                 <Frame HeightRequest="40" WidthRequest="40" CornerRadius="30" Margin="4" Padding="5">
                                     <Image Source="usuario.png" Aspect="AspectFill" Margin="0" />
                                 </Frame>
-                                <Entry HorizontalOptions="FillAndExpand" Placeholder="USUARIO"  Text="{Binding Username}" CharacterSpacing="5" />
+                                <Entry HorizontalOptions="FillAndExpand" Placeholder="USUARIO"  Text="{Binding usuarioss.Usuario1}" CharacterSpacing="5" />
                             </StackLayout>
                         </Frame>
                         <Frame BackgroundColor="Transparent" BorderColor="White" Padding="0" CornerRadius="30" Margin="0,30,0,0">
@@ -37,7 +37,7 @@
                                 <Frame HeightRequest="40" WidthRequest="40" CornerRadius="30" Margin="4" Padding="5">
                                     <Image Source="contra.png" Aspect="AspectFill" Margin="0" />
                                 </Frame>
-                                <Entry HorizontalOptions="FillAndExpand" Placeholder="CONTRASEÑA" Text="{Binding Password}" CharacterSpacing="5" IsPassword="True" />
+                                <Entry HorizontalOptions="FillAndExpand" Placeholder="CONTRASEÑA" Text="{Binding usuarioss.Contraseña}" CharacterSpacing="5" IsPassword="True" />
                             </StackLayout>
                         </Frame>
                     </StackLayout>
@@ -47,7 +47,7 @@
 
         <VerticalStackLayout Background="White" Grid.Row="2">
             <Border Style="{StaticResource BDegradados}" Margin="40,60,40,10">
-                <Button Text="INICIAR" Style="{StaticResource BotonesNoticias}" Command="{Binding LoginCommand}" />
+                <Button Text="INICIAR" Style="{StaticResource BotonesNoticias}" Command="{Binding IniciarSesionCoomand}" />
             </Border>
             <Border Style="{StaticResource BDegradados}" Margin="40,60,40,10">
                 <Button Text="INICIAR" Style="{StaticResource BotonesNoticias}" Command="{Binding VerUsuariosViewCommand}" />

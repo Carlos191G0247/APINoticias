@@ -10,12 +10,19 @@ using System.Windows.Input;
 using NoticiaMAUI.Service;
 using Microsoft.Maui.Controls;
 using NoticiaMAUI.Views;
+using System.Security.Claims;
 
 namespace NoticiaMAUI.ViewModels
 {
     public class ViewModel : INotifyPropertyChanged
     {
         //comandos para jwt
+        public Command IniciarSesionCoomand { get; set; }
+
+        private readonly AuthService auth;
+
+        public string Mensaje { get; set; }
+
 
         //otros
         public Command VerInicioSesionView { get; set; }
@@ -37,6 +44,9 @@ namespace NoticiaMAUI.ViewModels
 
         readonly NoticiaService noticiaserver = new NoticiaService();
         readonly UsuarioService usuarioserver = new UsuarioService();
+        readonly LoginService login = new LoginService(new AuthService());
+
+
 
         private string _imagePath;
         public Noticia noticiass { get; set; } = new Noticia();
@@ -59,6 +69,8 @@ namespace NoticiaMAUI.ViewModels
 
         public ViewModel()
         {
+            
+            IniciarSesionCoomand = new Command(IniciarSesion);
             //Para Admin
             VerUsuariosViewCommand = new Command(VerUsuario);
             VerAgregarUsuarioViewCommand = new Command(VerAgregarUsuario);
@@ -82,6 +94,43 @@ namespace NoticiaMAUI.ViewModels
 
             CargarNoticias();
             CargarUsuario();
+        }
+
+        private async void IniciarSesion()
+        {
+            try
+            {
+                if (Connectivity.Current.NetworkAccess == NetworkAccess.Internet)
+                { 
+                    usuarioss.Id = 2;
+                    usuarioss.Nombre = "asdas";
+                    if (!await login.IniciarSesion(usuarioss))
+                    {
+                        Mensaje = "Nombre de usuario o contraseña incorrectas";
+                    }
+                    else
+                    {
+                        var userId = ClaimsPrincipal.Current.FindFirst("Id")?.Value;
+                        if (userId == "1")
+                        {
+                            await Shell.Current.GoToAsync("//VerUsuarios");
+                        }
+                        else
+                        {
+                            await Shell.Current.GoToAsync("VerNoticiaReport");
+                        }
+                    }
+                }
+                else
+                    Mensaje = "No hay conexion a internet";
+
+                Actualizar(nameof(Mensaje));
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                Actualizar(nameof(Mensaje));
+            }
         }
 
         private async void CancelarNoticia(object obj)
