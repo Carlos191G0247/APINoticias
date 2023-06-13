@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using NoticiaMAUI.Service;
+using NoticiaMAUI.ViewModels;
 
 namespace NoticiaMAUI
 {
@@ -18,6 +20,9 @@ namespace NoticiaMAUI
                     fonts.AddFont("built-regular.otf", "BuiltRegular");
                     fonts.AddFont("Poppins-Regular.ttf", "PoppinsRegular");
                 });
+            builder.Services.AddSingleton<AuthService> ();
+            builder.Services.AddSingleton<LoginService> ();
+            builder.Services.AddSingleton<ViewModel>();
 
 #if DEBUG
 		builder.Logging.AddDebug();

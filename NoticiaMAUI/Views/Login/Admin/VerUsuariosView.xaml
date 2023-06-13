@@ -10,11 +10,8 @@
             <RowDefinition Height="auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Grid BackgroundColor="#dd0000" HeightRequest="55">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition Width="auto" />
-            </Grid.ColumnDefinitions>
+        <HorizontalStackLayout BackgroundColor="#dd0000" HeightRequest="55">
+            
             <Image Source="teloruego.png"
                    WidthRequest="200"
                    HorizontalOptions="CenterAndExpand"
@@ -27,7 +24,15 @@
                     Text="+"
                     VerticalOptions="Center"
                     Command="{Binding VerAgregarUsuarioViewCommand}" />
-        </Grid>
+            <Button Grid.Column="1"
+                    FontSize="30"
+                    Margin="0,-7,5,0"
+                    TextColor="White"
+                    BackgroundColor="Transparent"
+                    Text="cerrar"
+                    VerticalOptions="Center"
+                    Command="{Binding CerrarSesionCommand}" />
+        </HorizontalStackLayout>
         
         <ScrollView Grid.Row="1" Margin="5">
             <CollectionView ItemsSource="{Binding UsuarioList}" x:Name="myCollectionView">
@@ -62,6 +67,7 @@
                                             <Button Text="✏" BackgroundColor="Transparent" FontSize="30"></Button>
                                             <Button  Command="{Binding Source={x:Reference list}, Path=BindingContext.EliminarUsuarioCommand}" CommandParameter="{Binding .}" Text="&#128465;" BackgroundColor="Transparent" FontSize="30"></Button>
                                         </VerticalStackLayout>
+                                        
                                     </Grid>
                                 </Border>
                             </VerticalStackLayout>

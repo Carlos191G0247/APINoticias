@@ -13,9 +13,13 @@ namespace NoticiaMAUI.Service
         //Normalmente tiene 3 metodos clasicos
         string token;
 
-        public bool IsAuthenticated => ReadToken().Result != null;
+        public async Task<bool> IsAuthenticated()
+        {
+            var token = await ReadToken();
+            return token != null;
+        }
 
-        public IEnumerable<Claim> Cliams
+        public IEnumerable<Claim> Claims
         {
             get
             {

@@ -12,14 +12,16 @@ using Microsoft.Maui.Controls;
 using NoticiaMAUI.Views;
 using System.Security.Claims;
 
+
 namespace NoticiaMAUI.ViewModels
 {
     public class ViewModel : INotifyPropertyChanged
     {
         //comandos para jwt
         public Command IniciarSesionCoomand { get; set; }
+        public Command CerrarSesionCommand { get; set; }
 
-        private readonly AuthService auth;
+        //private readonly AuthService auth;
 
         public string Mensaje { get; set; }
 
@@ -44,7 +46,7 @@ namespace NoticiaMAUI.ViewModels
 
         readonly NoticiaService noticiaserver = new NoticiaService();
         readonly UsuarioService usuarioserver = new UsuarioService();
-        readonly LoginService login = new LoginService(new AuthService());
+        //readonly LoginService login = new LoginService(new AuthService());
 
 
 
@@ -66,11 +68,16 @@ namespace NoticiaMAUI.ViewModels
                 }
             }
         }
+        private readonly AuthService _authService;
+        private readonly LoginService _loginService;
 
-        public ViewModel()
+        public ViewModel(AuthService auth,LoginService login)
         {
-            
+            this._authService = auth;
+            this._loginService = login;
             IniciarSesionCoomand = new Command(IniciarSesion);
+            CerrarSesionCommand = new Command(CerrarSesion);
+
             //Para Admin
             VerUsuariosViewCommand = new Command(VerUsuario);
             VerAgregarUsuarioViewCommand = new Command(VerAgregarUsuario);
@@ -96,33 +103,50 @@ namespace NoticiaMAUI.ViewModels
             CargarUsuario();
         }
 
+        private async void CerrarSesion()
+        {
+            _authService.RemoveToken();
+            await Shell.Current.GoToAsync("//MainView");
+        }
+
         private async void IniciarSesion()
         {
             try
             {
                 if (Connectivity.Current.NetworkAccess == NetworkAccess.Internet)
-                { 
-                    usuarioss.Id = 2;
-                    usuarioss.Nombre = "asdas";
-                    if (!await login.IniciarSesion(usuarioss))
+                {
+                    usuarioss.Nombre = "";
+                    if (!await _loginService.IniciarSesion(usuarioss))
                     {
                         Mensaje = "Nombre de usuario o contraseña incorrectas";
                     }
                     else
                     {
-                        var userId = ClaimsPrincipal.Current.FindFirst("Id")?.Value;
-                        if (userId == "1")
+                        var userIdClaim = _authService.Claims.FirstOrDefault(x => x.Type == "Id");
+
+                        if (userIdClaim != null)
                         {
-                            await Shell.Current.GoToAsync("//VerUsuarios");
+                            var userId = userIdClaim.Value;
+                            if (userId == "1")
+                            {
+                                await Shell.Current.GoToAsync("//VerUsuarios");
+                            }
+                            else
+                            {
+                                await Shell.Current.GoToAsync("VerNoticiaReport");
+                            }
                         }
                         else
                         {
-                            await Shell.Current.GoToAsync("VerNoticiaReport");
+                            // La reclamación "Id" no está presente en el token
+                            // Manejar la situación según tus necesidades
                         }
                     }
                 }
                 else
-                    Mensaje = "No hay conexion a internet";
+                {
+                    Mensaje = "No hay conexión a internet";
+                }
 
                 Actualizar(nameof(Mensaje));
             }
@@ -132,6 +156,7 @@ namespace NoticiaMAUI.ViewModels
                 Actualizar(nameof(Mensaje));
             }
         }
+
 
         private async void CancelarNoticia(object obj)
         {
@@ -273,7 +298,30 @@ namespace NoticiaMAUI.ViewModels
 
         private async void VerSesion()
         {
-            await Shell.Current.GoToAsync("//LoginView");
+            bool isAuthenticated = await _authService.IsAuthenticated();
+
+            if (isAuthenticated)
+            {
+                var userIdClaim = _authService.Claims.FirstOrDefault(x => x.Type == "Id");
+
+                if (userIdClaim != null)
+                {
+                    var userId = userIdClaim.Value;
+                    if (userId == "1")
+                    {
+                        await Shell.Current.GoToAsync("//VerUsuarios");
+                    }
+                    else
+                    {
+                        await Shell.Current.GoToAsync("VerNoticiaReport");
+                    }
+                }
+            }
+            else
+            {
+                await Shell.Current.GoToAsync("//LoginView");
+
+            }
         }
 
         private string ConvertImageToBase64(string imagePath)
