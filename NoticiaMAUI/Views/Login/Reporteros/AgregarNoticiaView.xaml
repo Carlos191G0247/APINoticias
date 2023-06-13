@@ -98,6 +98,8 @@
                 <Label>Fecha</Label>
                 
                 <DatePicker Date="{Binding noticiass.Fecha}"></DatePicker>
+
+                <Label TextColor="Red" Text="{Binding Mensaje}"></Label>
                 <HorizontalStackLayout 
                                Grid.Row="2"
                                HorizontalOptions="Center"

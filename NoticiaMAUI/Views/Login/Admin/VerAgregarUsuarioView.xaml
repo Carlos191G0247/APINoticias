@@ -56,6 +56,8 @@
                 <Entry Text="{Binding usuarioss.Usuario1}"></Entry>
                 <Label>Contraseña</Label>
                 <Entry Text="{Binding usuarioss.Contraseña}"></Entry>
+
+                <Label TextColor="Red" Text="{Binding Mensaje}"></Label>
                 
 
                 <HorizontalStackLayout Grid.Row="2"

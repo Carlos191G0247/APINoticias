@@ -46,8 +46,6 @@ namespace NoticiaMAUI.ViewModels
 
         readonly NoticiaService noticiaserver = new NoticiaService();
         readonly UsuarioService usuarioserver = new UsuarioService();
-        //readonly LoginService login = new LoginService(new AuthService());
-
 
 
         private string _imagePath;
@@ -177,10 +175,44 @@ namespace NoticiaMAUI.ViewModels
         }
 
         private async void AgregarUsuario()
-        {                       
-            await usuarioserver.Insert(usuarioss);
-            await Shell.Current.GoToAsync("//VerUsuarios");
-            CargarUsuario();
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(usuarioss.Nombre))
+                {
+                    Mensaje = "El Nombre es obligatorio";
+                    Actualizar(nameof(Mensaje));
+                    throw new Exception(Mensaje);
+                }
+
+                if (string.IsNullOrEmpty(usuarioss.Usuario1))
+                {
+                    Mensaje = "El correo es obligatorio";
+                    Actualizar(nameof(Mensaje));
+                    throw new Exception(Mensaje);
+                }
+
+                if (string.IsNullOrEmpty(usuarioss.Contraseña))
+                {
+                    Mensaje = "La contraseña es obligatoria";
+                    Actualizar(nameof(Mensaje));
+                    throw new Exception(Mensaje);
+                }
+
+                Mensaje = "";
+                Actualizar(nameof(Mensaje));
+                await usuarioserver.Insert(usuarioss);
+                await Shell.Current.GoToAsync("//VerUsuarios");
+                CargarUsuario();
+
+            }
+            catch (Exception ex)
+            {
+                Mensaje = "Error: " + ex.Message;
+                Actualizar(nameof(Mensaje));
+            }
+
+            
         }
 
         private async void VerAgregarUsuario()
@@ -283,11 +315,50 @@ namespace NoticiaMAUI.ViewModels
 
         {
             
-            noticiass.Fecha = DateTime.Now;
-            noticiass.Imagen = ConvertImageToBase64(ImagePath);
-            await noticiaserver.Insert(noticiass);            
-            await Shell.Current.GoToAsync("VerNoticiaReport");
-            CargarNoticias();
+
+            try
+            {
+                if (string.IsNullOrEmpty(noticiass.Titulo))
+                {
+                    Mensaje = "El título es obligatorio";
+                    Actualizar(nameof(Mensaje));
+                    throw new Exception(Mensaje);
+                }
+                
+                if (string.IsNullOrEmpty(noticiass.Autor))
+                {
+                    Mensaje = "El autor es obligatorio";
+                    Actualizar(nameof(Mensaje));
+                    throw new Exception(Mensaje);
+                }
+
+                if (string.IsNullOrEmpty(noticiass.Contenido))
+                {
+                    Mensaje = "El contenido es obligatorio";
+                    Actualizar(nameof(Mensaje));
+                    throw new Exception(Mensaje);
+                }
+                if (string.IsNullOrEmpty(noticiass.Imagen))
+                {
+                    Mensaje = "La imagen es obligatoria";
+                    Actualizar(nameof(Mensaje));
+                    throw new Exception(Mensaje);
+                }
+                Mensaje = "";
+                Actualizar(nameof(Mensaje));
+                noticiass.Fecha = DateTime.Now;
+                noticiass.Imagen = ConvertImageToBase64(ImagePath);
+                await noticiaserver.Insert(noticiass);
+                await Shell.Current.GoToAsync("VerNoticiaReport");
+                CargarNoticias();
+                
+
+            }
+            catch (Exception ex)
+            {
+                Mensaje = "Error: " + ex.Message;
+                Actualizar(nameof(Mensaje));
+            }           
         }
 
         private async void VerAgregarRep()
