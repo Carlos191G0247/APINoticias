@@ -147,6 +147,7 @@ namespace NoticiaMAUI.ViewModels
                     }
                     
                 }
+                //xd
                 else
                 {
                     Mensaje = "No hay conexión a internet";
