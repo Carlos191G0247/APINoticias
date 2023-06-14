@@ -439,7 +439,7 @@
     <Style TargetType="Border" x:Key="BDatos" >
         <Setter Property="StrokeThickness" Value="1"></Setter>
         <Setter Property="Background" Value="white"></Setter>
-        <Setter Property="Stroke" Value="transparent"></Setter>
+        <Setter Property="Stroke" Value="#d1d1d1"></Setter>
         <Setter Property="StrokeShape" Value="RoundRectangle 40"></Setter>
         <Setter Property="Shadow">
             <Setter.Value>

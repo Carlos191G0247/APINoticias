@@ -65,7 +65,7 @@
                                         </VerticalStackLayout>
                                         <VerticalStackLayout Grid.Column="2" VerticalOptions="CenterAndExpand">
                                             <Button Text="✏" BackgroundColor="Transparent" FontSize="30"></Button>
-                                            <Button  Command="{Binding Source={x:Reference list}, Path=BindingContext.EliminarUsuarioCommand}" CommandParameter="{Binding .}" Text="&#128465;" BackgroundColor="Transparent" FontSize="30"></Button>
+                                            <Button Command="{Binding Source={x:Reference list}, Path=BindingContext.EliminarUsuarioCommand}" CommandParameter="{Binding .}" Text="&#128465;" BackgroundColor="Transparent" FontSize="30"></Button>
                                         </VerticalStackLayout>
                                         
                                     </Grid>
