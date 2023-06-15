@@ -23,20 +23,13 @@
                    WidthRequest="200"
                    HorizontalOptions="Center"
                     />
-            <Button 
-                    FontSize="30"
-                    
-                    TextColor="White"
-                    BackgroundColor="Transparent"
-                    Text="+"
-                    HorizontalOptions="End"
-                    Command="{Binding VerAgregarNoticiaView}" />
-            <Button 
-                    FontSize="30"
+            
+            <Button Margin="50,0,0,0"
+                    FontSize="12"
                     HorizontalOptions="End"
                     TextColor="White"
                     BackgroundColor="Transparent"
-                    Text="c"
+                    Text="Cerrar Sesion"
                     
                     Command="{Binding CerrarSesionCommand}" />
         </HorizontalStackLayout>
@@ -47,7 +40,7 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="mo:Noticia">
-                        <Grid Margin="0,5">
+                        <Grid Margin="0,0">
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Source={x:Reference list}, Path=BindingContext.VerNoticiaCompletaCommand}" CommandParameter="{Binding .}" />
                             </Grid.GestureRecognizers>
@@ -60,7 +53,7 @@
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="auto" />
-                                        <ColumnDefinition Width="220" />
+                                        <ColumnDefinition Width="200" />
                                         <ColumnDefinition Width="auto" />
                                     </Grid.ColumnDefinitions>
                                     <Grid HeightRequest="100" WidthRequest="100" Margin="10,0,0,0">
@@ -106,5 +99,15 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </ScrollView>
+        <Border Grid.RowSpan="2" VerticalOptions="End" HorizontalOptions="End" Margin="0,0,10,10" Stroke="transparent" BackgroundColor="Transparent" >
+            <Button Background="red" VerticalOptions="End" HorizontalOptions="End" 
+                    TextColor="White"
+                    BackgroundColor="Transparent"
+                    Text="+"
+                    FontAttributes="Bold"
+                    FontSize="22"
+                    Command="{Binding VerAgregarNoticiaView}" />
+        </Border>
+       
     </Grid>
 </ContentPage>

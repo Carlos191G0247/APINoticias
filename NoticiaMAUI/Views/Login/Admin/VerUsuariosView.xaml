@@ -38,7 +38,10 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="mo:Usuario">
-                        <Grid Margin="10,0" >
+                        <Border BackgroundColor="#1b729f" x:DataType="mo:Usuario">
+                            
+                        
+                        <Grid Margin="10,5" BackgroundColor="#1a323e" >
                             <Grid.RowDefinitions>
                                 <RowDefinition ></RowDefinition>
                                 <RowDefinition ></RowDefinition>
@@ -51,19 +54,20 @@
 
                             <Grid Grid.RowSpan="2">
                                 <Grid HeightRequest="100">
-                                    <Image Aspect="AspectFill" Source="usuario2.png" Margin="8,5,0,0"></Image>
+                                    <Image Aspect="AspectFill" Source="anonimo.jpg" Margin="8,5,0,0"></Image>
                                 </Grid>
                             </Grid>
 
                             <VerticalStackLayout Grid.Column="1" Grid.RowSpan="2">
-                                <Label FontSize="30" Text="{Binding Nombre}" TextColor="Black" LineBreakMode="WordWrap" Padding="0,0,50,0" FontFamily="PoppinsRegular" TextTransform="Uppercase"></Label>
-                                <Label FontSize="15" Text="{Binding Usuario1}" TextColor="Black" BackgroundColor="#f7d281" FontAttributes="Bold" HorizontalTextAlignment="Start" Padding="1" Margin="0,0,0,0"></Label>
-                                <Button  Command="{Binding Source={x:Reference list}, Path=BindingContext.EliminarUsuarioCommand}" CommandParameter="{Binding .}" Text="&#128465;" BackgroundColor="Transparent" HorizontalOptions="End" FontSize="30"></Button>
+                                    <Label FontSize="30" Text="{Binding Nombre}" TextColor="White" LineBreakMode="WordWrap" Padding="0,0,50,0" Margin="10,0,0,0" FontFamily="BuiltRegular" TextTransform="Uppercase"></Label>
+                                    <Label FontSize="15" Text="{Binding Usuario1}" TextColor="Black" Margin="10,0,10,0" FontFamily="keny" CharacterSpacing="1" BackgroundColor="#f7d281" FontAttributes="Bold" HorizontalTextAlignment="Start" Padding="1" ></Label>
+                                <Button  Command="{Binding Source={x:Reference list}, Path=BindingContext.EliminarUsuarioCommand}" CommandParameter="{Binding .}" ImageSource="delete1.png" BackgroundColor="Transparent" HorizontalOptions="End" FontSize="30"></Button>
 
                             </VerticalStackLayout>
                             
                             
                         </Grid>
+                        </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

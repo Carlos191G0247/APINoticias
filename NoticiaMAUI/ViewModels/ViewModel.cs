@@ -40,6 +40,7 @@ namespace NoticiaMAUI.ViewModels
         public Command AgregarUsuarioCommand { get; set; }
         public Command CancelarUsuarioCommand { get;set; }
         public Command CancelarNoticiasCommand { get; set; }
+        public Command CargarNoticiaCommand { get; set; }
 
         public Command AgregarNotciaCommand { get; set; }
         public Command VerAgregarUsuarioViewCommand { get; set; }
@@ -86,6 +87,7 @@ namespace NoticiaMAUI.ViewModels
             // Para todos
             VerInicioSesionView = new Command(VerSesion);
             VerNoticiaCompletaCommand = new Command<Noticia>(VerNoticiaCompleta);
+            CargarNoticiaCommand = new Command(CargarNotica1);
             // Para Reporteros
             VerAgregarNoticiaView = new Command(VerAgregarRep);
             AgregarNotciaCommand = new Command(AgregarNoticia);
@@ -215,6 +217,7 @@ namespace NoticiaMAUI.ViewModels
                 await Shell.Current.GoToAsync("//VerUsuarios");
                 CargarUsuario();
                 LimpiarUsuario();
+                
 
             }
             catch (Exception ex)
@@ -235,7 +238,7 @@ namespace NoticiaMAUI.ViewModels
 
         private async void VerAgregarUsuario()
         {
-
+            
             await Shell.Current.GoToAsync("//VerAgregarUsuario");
         }
 
@@ -307,6 +310,11 @@ namespace NoticiaMAUI.ViewModels
             }
         }
 
+        public async void CargarNotica1()
+        {
+            await CargarNoticias();
+        }
+
         public async Task CargarNoticias()
         {
             // Obtener la lista de noticias desde el servicio
@@ -367,9 +375,11 @@ namespace NoticiaMAUI.ViewModels
                 noticiass.Fecha = DateTime.Now;
                 noticiass.Imagen = ConvertImageToBase64(ImagePath);
                 await noticiaserver.Insert(noticiass);
+                await CargarNoticias();
                 await Shell.Current.GoToAsync("VerNoticiaReport");
-                CargarNoticias();
                 
+                
+
 
             }
             catch (Exception ex)
@@ -382,7 +392,10 @@ namespace NoticiaMAUI.ViewModels
 
         private async void VerAgregarRep()
         {
-            ImagePath = null;
+            ImagePath = "";
+            noticiass = new();
+            Actualizar(nameof(noticiass));
+            Actualizar(nameof(ImagePath));
             await Shell.Current.GoToAsync("//VerAgregarRep");
         }
 

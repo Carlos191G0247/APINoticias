@@ -60,9 +60,12 @@
 	<ItemGroup>
 	  <None Remove="Resources\Fonts\kenycb.ttf" />
 	  <None Remove="Resources\Fonts\Poppins-Regular.ttf" />
+	  <None Remove="Resources\Images\anonimo.jpg" />
 	  <None Remove="Resources\Images\cerrar.png" />
 	  <None Remove="Resources\Images\contra.png" />
 	  <None Remove="Resources\Images\daily.png" />
+	  <None Remove="Resources\Images\delete1.png" />
+	  <None Remove="Resources\Images\delete2.png" />
 	  <None Remove="Resources\Images\logo.jpg" />
 	  <None Remove="Resources\Images\logo2.jpg" />
 	  <None Remove="Resources\Images\teloruego.PNG" />

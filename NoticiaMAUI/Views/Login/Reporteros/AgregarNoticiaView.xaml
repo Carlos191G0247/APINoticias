@@ -37,7 +37,7 @@
 
          <!--//grid 1-->
         <Grid Padding="10"
-                  BackgroundColor="#c92a2e">
+                  BackgroundColor="#dd0000">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"></ColumnDefinition>
                 <ColumnDefinition ></ColumnDefinition>
@@ -84,7 +84,7 @@
                        />
                     <Button Grid.Column="1"
                         Command="{Binding SeleccionarImagenCommand}"
-                        Text="xd"
+                        Text="Agregar"
                         BackgroundColor="#1b729f"
                         HeightRequest="80"
                         WidthRequest="150"
@@ -139,7 +139,7 @@
 
         </HorizontalStackLayout>-->
 
-        <Rectangle Grid.Row="2" BackgroundColor="#c92a2e" ></Rectangle>
+        <Rectangle Grid.Row="2" BackgroundColor="#dd0000" ></Rectangle>
     </Grid>
 
 </ContentPage>
