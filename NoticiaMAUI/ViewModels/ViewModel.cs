@@ -208,12 +208,13 @@ namespace NoticiaMAUI.ViewModels
                     Actualizar(nameof(Mensaje));
                     throw new Exception(Mensaje);
                 }
-
-                Mensaje = "";
+                
+                Mensaje = "";              
                 Actualizar(nameof(Mensaje));
                 await usuarioserver.Insert(usuarioss);
                 await Shell.Current.GoToAsync("//VerUsuarios");
                 CargarUsuario();
+                LimpiarUsuario();
 
             }
             catch (Exception ex)
@@ -224,6 +225,12 @@ namespace NoticiaMAUI.ViewModels
             }
 
             
+        }
+        private void LimpiarUsuario()
+        {
+            usuarioss.Nombre = "";
+            usuarioss.Usuario1 = "";
+            usuarioss.Contraseña = "";
         }
 
         private async void VerAgregarUsuario()
@@ -349,12 +356,12 @@ namespace NoticiaMAUI.ViewModels
                     Actualizar(nameof(Mensaje));
                     throw new Exception(Mensaje);
                 }
-                if (string.IsNullOrEmpty(noticiass.Imagen))
-                {
-                    Mensaje = "La imagen es obligatoria";
-                    Actualizar(nameof(Mensaje));
-                    throw new Exception(Mensaje);
-                }
+                //if (string.IsNullOrEmpty(noticiass.Imagen))
+                //{
+                //    Mensaje = "La imagen es obligatoria";
+                //    Actualizar(nameof(Mensaje));
+                //    throw new Exception(Mensaje);
+                //}
                 Mensaje = "";
                 Actualizar(nameof(Mensaje));
                 noticiass.Fecha = DateTime.Now;
@@ -371,6 +378,7 @@ namespace NoticiaMAUI.ViewModels
                 Actualizar(nameof(Mensaje));
             }           
         }
+        
 
         private async void VerAgregarRep()
         {
